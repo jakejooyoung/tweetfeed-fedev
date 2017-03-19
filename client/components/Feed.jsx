@@ -16,7 +16,7 @@ export class Post extends React.Component {
 	}
 	render(){
 		return (
-			<div className="post" style={{textAlign: 'center'}}>
+			<div className="post">
 			    <p> First Post </p>
 			    {this.renderButton()}
 			</div>
@@ -26,7 +26,7 @@ export class Post extends React.Component {
 export class Feed extends React.Component {
 	renderTitle(){
 		return (
-    		<div className="np-title np-border" style={{textAlign: 'center'}}>
+    		<div className="np-title np-border">
 			    <p> {formatWelcomeText(user)} </p>
     		</div>
 		)
