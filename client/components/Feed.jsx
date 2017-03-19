@@ -3,11 +3,23 @@
 */
 import React from 'react';
 
-export class Post extends React.Component {
+
+export class Button extends React.Component {
 	render(){
 		return (
-			<div className="Avatar" style={{textAlign: 'center'}}>
-			    <h1> Hi hey </h1>
+			<button className="btn yes"> Post </button>
+  		);
+	}
+}
+export class Post extends React.Component {
+	renderButton(){
+		return <Button/>
+	}
+	render(){
+		return (
+			<div className="post" style={{textAlign: 'center'}}>
+			    <p> First Post </p>
+			    {this.renderButton()}
 			</div>
   		);
 	}
@@ -22,7 +34,7 @@ export class Feed extends React.Component {
 			lastName: 'Perez'
 		}
     	return (	
-    		<div> 
+    		<div className="feed"> 
 	    		{this.renderPost()}
 			    <div style={{textAlign: 'center'}}>
 				    <h1>
