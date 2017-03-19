@@ -3,7 +3,6 @@
 */
 import React from 'react';
 
-
 export class Button extends React.Component {
 	render(){
 		return (
@@ -25,28 +24,50 @@ export class Post extends React.Component {
 	}
 }
 export class Feed extends React.Component {
+	renderTitle(){
+		return (
+    		<div className="np-title np-border" style={{textAlign: 'center'}}>
+			    <p> {formatWelcomeText(user)} </p>
+    		</div>
+		)
+	}
 	renderPost(){
 		return <Post/>
 	}
 	render() {
-	  	const user = {
-			firstName: 'Harper',
-			lastName: 'Perez'
-		}
-    	return (	
-    		<div className="feed"> 
-	    		{this.renderPost()}
-			    <div style={{textAlign: 'center'}}>
-				    <h1>
-				    	{formatWelcomeText(user)}
-				    </h1>
-				    <p> This is scss testing </p>
+    	return (
+    		<div>	
+    			{this.renderTitle()}
+	    		<div className="feed"> 
+					{this.renderPost()}
+					{this.renderPost()}
+		    		{this.renderPost()}
+		    		{this.renderPost()}
+					{this.renderPost()}
+					{this.renderPost()}
+		    		{this.renderPost()}
+		    		{this.renderPost()}
 				</div>
 			</div>
 		);
  	}
 }
 
-function formatWelcomeText(user) {
-  	return 'Welcome, ' + user.firstName + ' ' + user.lastName;
+const user = {
+	firstName: 'Jake',
+	lastName: 'Kim'
 }
+function formatWelcomeText(user) {
+  	return user.firstName + " " + user.lastName + "'s Activities";
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,21 +1,54 @@
+/* LAYOUTS */
+#app-container {
+	
+}
+#feed-container {
+    width: 400px;
+    position: fixed;
+    height: 100vh;
+    overflow: auto;
+    right: 0;
+    top: 0;
+}
+
+
+/* COMPONENTS */
 .feed {
-	position:absolute;
-	width: 400px;
-	right: 0;
-	margin:10px;
+	padding-top:50px;
+	margin:1px;
+	position: relative;
+	z-index: 0;
 }
 .post {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 5px;
-    z-index: 101;
+    position: relative;
+    margin: 0;
+    z-index: 0;
     padding: 15px;
     background: #fff;
-    border-radius: 3px;
+    // border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+
+/* UI GLOBALS */
+body {
+	font-family: 'Roboto', sans-serif;
+}
+.np-title{
+	padding:5px 15px;
+	position: fixed;
+	top: 0;
+	height: 50px;
+	z-index: 10;
+	width: 100%;
+	background:#fbfbfb;
+	border-bottom: 0;
+	p {
+		position: inherit;
+	}
+}
+.np-border{
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
 }
 .btn {
     font: inherit;

@@ -11,5 +11,5 @@ import './components/app.scss';
 const app = <App />;
 const feed= <Feed />;
 
-ReactDOM.render(app, document.getElementById('app'));
-ReactDOM.render(feed, document.getElementById('feed'));
+ReactDOM.render(app, document.getElementById('app-container'));
+ReactDOM.render(feed, document.getElementById('feed-container'));
