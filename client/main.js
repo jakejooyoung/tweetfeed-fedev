@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
 import { Feed } from './components/Feed.jsx';
 
-// import style from './components/App.scss'; // or `.scss` if you chose scss
 import './components/app.scss';
 
 const app = <App />;
