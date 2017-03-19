@@ -1,5 +1,8 @@
-# NopainUI
+# NpUI Development Server
 
-NopainUI is a library of ui components built with React, Webpack, Babel, SCSS.
+NopainUI is a dev server of React, Webpack, Babel, SCSS.
+
+Create React components bundled w/ Webpack.
+
 
 
