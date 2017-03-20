@@ -15,20 +15,41 @@ const NpUI = {
   	return (
   		<div className="np-title np-border">
 		    <p> {formatWelcomeText(props.user)} </p>
-			</div>
-		);
+		</div>
+	);
   }
 }
 
-function TodoList() {
-  const todos = ['finish doc', 'submit pr', 'nag dan to review'];
-  return (
-    <ul>
-      {todos.map((message) => <Item key={message} message={message} />)}
-    </ul>
-  );
+export class Feed extends React.Component {
+	renderTitle(){ 
+		return <NpUI.Title user="Jake"/>
+	}
+	renderPosts(){
+		const feed=['finish doc', 'submit pr', 'nag dan to review'];
+		return (
+			<Repeat className="feed" numTimes={10}>
+	   		   	{(index) => <Post key={index} content={feed[index]} />}
+		    </Repeat>
+   		)
+	}
+	render() {
+    	return (
+    		<div id="feed-container">	
+				{this.renderTitle()}
+				{this.renderPosts()}
+			</div>
+		);
+ 	}
 }
-const posts = ['finish doc', 'submit pr', 'nag dan to review'];
+export class Repeat extends React.Component {
+	render(){
+		let items = [];
+		for (let i = 0; i < this.props.numTimes; i++) {
+			items.push(this.props.children(i));
+		}
+		return <div className={this.props.className}>{items}</div>;
+	}
+}
 export class Post extends React.Component {
 	renderButton(){
 		return <NpUI.Button action="yes"/>
@@ -36,50 +57,13 @@ export class Post extends React.Component {
 	render(){
 		return (
 			<div className="post">
-			    <h4> {this.props.title} </h4>
-			    <p> {this.props.text} </p>
+				<h4>{this.props.reactKey} </h4>
+				<p> {this.props.content} </p>
 			    {this.renderButton()}
 			</div>
 		);
 	}
 }
-export class Repeat extends React.Component {
-	render(){
-		  let items = ['finish doc', 'submit pr', 'nag dan to review'];
-		  for (let i = 0; i < this.props.numTimes; i++) {
-		    items.push(this.props.children(i));
-		  }
-		  return <div>{items}</div>;
-	}
-}
-export class Feed extends React.Component {
-	renderTitle(props){ 
-		return <NpUI.Title user="Jake"/>
-	}
-	renderPost(props){
-		return <Post key="{index}" title="{props.title}" text="{props.text}"/>
-	}
-	renderPosts(props){
-		return (
-			<Repeat numTimes={10}>
-      	{(index) => <div key={index}>This is item {index} in the list</div>}
-      	{(index) => {this.renderPost(index)}}
-	    </Repeat>
-    )
-	}
-	render() {
-    	return (
-    		<div id="feed-container">	
-				{this.renderTitle()}
-
-    		<div className="feed"> 
-	   			{this.renderPosts()}
-				</div>
-			</div>
-		);
- 	}
-}
-
 const user = {
 	firstName: 'Jake',
 	lastName: 'Kim'
