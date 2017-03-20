@@ -1,5 +1,19 @@
 # NopainUI Development Server
+**What is it?**
+A development server 
+______
+**What it for?**
+For writing & bundling static client-side code.
+______
+**What it use?**:
+Uses React, Webpack, Babel, SCSS.
+___
+**Getting Started:**
 
-NopainUI is a dev server of React, Webpack, Babel, SCSS.
+1. Install Yarn package manager.
 
-Create React components bundled w/ Webpack.
+- Mac
+	```
+	brew update
+	brew install yarn
+	```
