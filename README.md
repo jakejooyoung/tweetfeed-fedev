@@ -21,4 +21,6 @@ ___
 	```
 	brew update
 	brew install yarn
+	yarn
+	yarn start
 	```
