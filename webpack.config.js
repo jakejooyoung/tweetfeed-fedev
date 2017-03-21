@@ -2,8 +2,8 @@
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var UglifyJsPlugin = require('uglify-js-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// Plugin Cpnfigurations
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/client/index.html',
   filename: 'index.html',
@@ -12,28 +12,34 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     'https://fonts.googleapis.com/css?family=Roboto',
   ]
 });
-var UglifyJsPlugin = new UglifyJsPlugin({
-  compress: {
-      warnings: false
-  }
-});
 // var ExtractTextPluginConfig=new ExtractTextPlugin({
 //   filename: "bundle.css",
 //   disable: false,
 //   allChunks: true
 // })
-module.exports = {
-  entry: [
-    './client/main.js'
-  ],
+const path = require('path');
+
+const config = {
+  entry: './client/main.js',
   output: {
-    path: __dirname + '/dist',
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
   module: {
-    loaders: [
-      { test: [ /\.js$/, /\.jsx$/ ], loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.scss$/, loaders: ['style-loader', 'css-loader','sass-loader' ], exclude: /node_modules/  }
+    rules: [
+      { 
+        test: [ /\.js$/, /\.jsx$/ ], 
+        loader: 'babel-loader', 
+        exclude: path.resolve(__dirname, 'node_modules')
+      },
+      { 
+        test: /\.scss$/, 
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        }),
+        exclude: path.resolve(__dirname, 'node_modules')
+      }
     ]
   },
   performance: {
@@ -48,6 +54,18 @@ module.exports = {
   devtool: "source-map", // enum
   // enhance debugging by adding meta info for the browser devtools
   // source-map most detailed at the expense of build speed.
-  plugins: [HTMLWebpackPluginConfig,UglifyJsPlugin]
+  plugins: [
+    HTMLWebpackPluginConfig,
+    new UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
+    new ExtractTextPlugin({
+      filename: 'app.css',
+      allChunks: true,
+    })
+  ]
 };
+module.exports = config;
 
