@@ -1,8 +1,9 @@
 // In webpack.config.js
-
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var UglifyJsPlugin = require('uglify-js-plugin')
+
+// Plugin Cpnfigurations
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/client/index.html',
   filename: 'index.html',
@@ -11,11 +12,16 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
     'https://fonts.googleapis.com/css?family=Roboto',
   ]
 });
-var UglifyJsPluginConfig = new UglifyJsPlugin({
+var UglifyJsPlugin = new UglifyJsPlugin({
   compress: {
       warnings: false
   }
 });
+// var ExtractTextPluginConfig=new ExtractTextPlugin({
+//   filename: "bundle.css",
+//   disable: false,
+//   allChunks: true
+// })
 module.exports = {
   entry: [
     './client/main.js'
@@ -42,6 +48,6 @@ module.exports = {
   devtool: "source-map", // enum
   // enhance debugging by adding meta info for the browser devtools
   // source-map most detailed at the expense of build speed.
-  plugins: [HTMLWebpackPluginConfig,UglifyJsPluginConfig]
+  plugins: [HTMLWebpackPluginConfig,UglifyJsPlugin]
 };
 
