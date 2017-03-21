@@ -2,7 +2,9 @@
     ./client/components/App.jsx
 */
 import React from 'react';
-
+// var json = require("json-loader!localdb/mbit-domains.json");
+// var json = require(path.join(__dirname, "../localdb/mbit-domains.json"));
+import Domains from 'Db/domains.json'
 const NpUI = {
   Button: function Button(props) {
     return (
@@ -25,7 +27,7 @@ export class Feed extends React.Component {
 		return <NpUI.Title user="Jake"/>
 	}
 	renderPosts(){
-		const feed=['finish doc', 'submit pr', 'nag dan to review'];
+		const feed=['fdf','fdfd','shihi'];
 		return (
 			<Repeat className="feed" numTimes={10}>
 	   		   	{(index) => <Post key={index} content={feed[index]} />}
@@ -37,6 +39,7 @@ export class Feed extends React.Component {
     		<div id="feed-container">	
 				{this.renderTitle()}
 				{this.renderPosts()}
+				{Domains.DomainList.Domain[9]._Name}
 			</div>
 		);
  	}

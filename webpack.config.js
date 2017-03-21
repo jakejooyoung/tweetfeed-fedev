@@ -25,12 +25,17 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  resolve:{
+    alias: {
+      Db: path.resolve(__dirname, 'db/'),
+    },
+  },
   module: {
     rules: [
       { 
         test: [ /\.js$/, /\.jsx$/ ], 
         loader: 'babel-loader', 
-        exclude: path.resolve(__dirname, 'node_modules')
+        // exclude: path.resolve(__dirname, 'node_modules')
       },
       { 
         test: /\.scss$/, 
@@ -38,8 +43,12 @@ const config = {
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         }),
-        exclude: path.resolve(__dirname, 'node_modules')
-      }
+        // exclude: path.resolve(__dirname, 'node_modules')
+      },
+      {
+        test: /\.json$/, 
+        use: 'json-loader',  
+      },
     ]
   },
   performance: {
