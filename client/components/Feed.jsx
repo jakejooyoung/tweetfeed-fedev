@@ -3,62 +3,73 @@
 */
 import React from 'react';
 
-export class Button extends React.Component {
-	render(){
-		return (
-			<button className="btn yes"> Post </button>
-  		);
-	}
+const NpUI = {
+  Button: function Button(props) {
+    return (
+    	<button className={"btn "+props.action}> 
+	    	Post
+	    </button>
+		);
+  },
+  Title: function Title(props) {
+  	return (
+  		<div className="np-title np-border">
+		    <p> {formatWelcomeText(props.user)} </p>
+		</div>
+	);
+  }
 }
-export class Post extends React.Component {
-	renderButton(){
-		return <Button/>
-	}
-	render(){
-		return (
-			<div className="post">
-			    <p> First Post </p>
-			    {this.renderButton()}
-			</div>
-  		);
-	}
-}
+
 export class Feed extends React.Component {
-	renderTitle(){
-		return (
-    		<div className="np-title np-border">
-			    <p> {formatWelcomeText(user)} </p>
-    		</div>
-		)
+	renderTitle(){ 
+		return <NpUI.Title user="Jake"/>
 	}
-	renderPost(){
-		return <Post/>
+	renderPosts(){
+		const feed=['finish doc', 'submit pr', 'nag dan to review'];
+		return (
+			<Repeat className="feed" numTimes={10}>
+	   		   	{(index) => <Post key={index} content={feed[index]} />}
+		    </Repeat>
+   		)
 	}
 	render() {
     	return (
-    		<div>	
-    			{this.renderTitle()}
-	    		<div className="feed"> 
-					{this.renderPost()}
-					{this.renderPost()}
-		    		{this.renderPost()}
-		    		{this.renderPost()}
-					{this.renderPost()}
-					{this.renderPost()}
-		    		{this.renderPost()}
-		    		{this.renderPost()}
-				</div>
+    		<div id="feed-container">	
+				{this.renderTitle()}
+				{this.renderPosts()}
 			</div>
 		);
  	}
 }
-
+export class Repeat extends React.Component {
+	render(){
+		let items = [];
+		for (let i = 0; i < this.props.numTimes; i++) {
+			items.push(this.props.children(i));
+		}
+		return <div className={this.props.className}>{items}</div>;
+	}
+}
+export class Post extends React.Component {
+	renderButton(){
+		return <NpUI.Button action="yes"/>
+	}
+	render(){
+		return (
+			<div className="post">
+				<h4>{this.props.reactKey} </h4>
+				<p> {this.props.content} </p>
+			    {this.renderButton()}
+			</div>
+		);
+	}
+}
 const user = {
 	firstName: 'Jake',
 	lastName: 'Kim'
 }
 function formatWelcomeText(user) {
-  	return user.firstName + " " + user.lastName + "'s Activities";
+  	return user+ "'s Activities";
 }
 
 

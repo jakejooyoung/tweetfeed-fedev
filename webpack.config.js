@@ -1,10 +1,27 @@
 // In webpack.config.js
+var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var UglifyJsPlugin = require('uglify-js-plugin')
+
+// Plugin Cpnfigurations
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/client/index.html',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'body',
+  links: [
+    'https://fonts.googleapis.com/css?family=Roboto',
+  ]
 });
+var UglifyJsPlugin = new UglifyJsPlugin({
+  compress: {
+      warnings: false
+  }
+});
+// var ExtractTextPluginConfig=new ExtractTextPlugin({
+//   filename: "bundle.css",
+//   disable: false,
+//   allChunks: true
+// })
 module.exports = {
   entry: [
     './client/main.js'
@@ -19,6 +36,18 @@ module.exports = {
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader','sass-loader' ], exclude: /node_modules/  }
     ]
   },
-  plugins: [HTMLWebpackPluginConfig]
+  performance: {
+    hints: "warning", // enum
+    maxAssetSize: 200000, // int (in bytes),
+    maxEntrypointSize: 400000, // int (in bytes)
+    assetFilter: function(assetFilename) { 
+      // Function predicate that provides asset filenames
+      return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
+    }
+  },
+  devtool: "source-map", // enum
+  // enhance debugging by adding meta info for the browser devtools
+  // source-map most detailed at the expense of build speed.
+  plugins: [HTMLWebpackPluginConfig,UglifyJsPlugin]
 };
 
