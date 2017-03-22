@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 
 export default class App extends React.Component {
 	renderFeed() {
-		return <Feed/>
+		return <Feed type="domains"/>
 	}
 	render() {
 		return (
