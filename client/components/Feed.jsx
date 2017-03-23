@@ -22,44 +22,55 @@ const NpUI = {
 	);
   }
 }
-
+var categories= [
+	'bitcoin',
+	'millibit',
+	'millibitcoin',
+	'mbit',
+	'bitcent',
+	'btc',
+	'bit',
+	'millicoin',
+	'nrl',
+	'hodl',
+	'tosh'
+];
+const domains=Domains.DomainList.Domain;
+const domainsByCategory=[];
 export class Feed extends React.Component {
 	renderTitle(){ 
 		return <NpUI.Title user='Jake'/>
 	}
 	parseDomainArr(){
-		var domains=Domains.DomainList.Domain;
-		const categories= [
-			'bitcoin',
-			'millibit',
-			'millibitcoin',
-			'mbit',
-			'bitcent',
-			'btc',
-			'bit',
-			'millicoin',
-			'nrl',
-			'hodl',
-			'tosh'
-		];
 		var arr= domains.map(function(obj){
-			var nObj={};
+			var nObj={
+				Name:obj._Name,
+				Category:''
+			};
 			nObj.Name=obj._Name;
 			categories.forEach(function(category){
-				if (!nObj.Category||category.length>nObj.Category.length){
+				if (!nObj.Category||nObj.Name.includes(category)&&category.length>nObj.Category.length){
 					nObj.Category=category;
 				}
 			});
 			return nObj;
 		});
+		console.log(arr[1].Name ,arr[1].Category);
 		return arr;
 	}
+	// dynamicSort(category) {
+	//     var arr=[];
+	//     for (i=0;i<categories.length;i++){
+	//     	var catArr=[];
+	//     	feed.map
+	//     }
+	// }
 	renderPosts(){
 		// var feed=[];
 		// feed=Domains.DomainList.Domain;
 		var feed=(this.props.type=='domains') ? this.parseDomainArr():['fdf','fdfd','shihi'];
 		return (
-			<Repeat className='feed' numTimes={feed.length}>
+			<Repeat className='feed' numTimes={feed.length} >
 	   		   	{(index) => <Post key={index} content={feed[index].Name} />}
 		    </Repeat>
    		)
