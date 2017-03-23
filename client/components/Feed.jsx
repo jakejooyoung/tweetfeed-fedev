@@ -28,31 +28,32 @@ export class Feed extends React.Component {
 		return <NpUI.Title user='Jake'/>
 	}
 	parseDomainArr(){
-		var feed=Domains.DomainList.Domain;
-		return feed.map(function(obj) { 
-		   // var arr=[];
-		   // arr.push(obj._Name);
-		  	var dn=obj._Name
-			var rObj = {};
-			rObj['Name'] = dn;
-
-			var categories= ['bitcoin','millibit','millibitcoin','mbit','bitcent','btc','bit','millicoin','nrl','hodl','tosh'];
-			categories.forEach(function(category) {	
-				// Match domain name with a category
-				if (dn.includes(category)){
-					// If rObj['Category'] already had a category string assigned, compare lengths.
-					// Assign Category value if no previously matched Cateogry or longer string matched.
-					if (!rObj['Category'] || rObj['Category'].length < category.length){
-						rObj['Category']=category;
-					}
+		var domains=Domains.DomainList.Domain;
+		const categories= [
+			'bitcoin',
+			'millibit',
+			'millibitcoin',
+			'mbit',
+			'bitcent',
+			'btc',
+			'bit',
+			'millicoin',
+			'nrl',
+			'hodl',
+			'tosh'
+		];
+		var arr= domains.map(function(obj){
+			var nObj={};
+			nObj.Name=obj._Name;
+			categories.forEach(function(category){
+				if (!nObj.Category||category.length>nObj.Category.length){
+					nObj.Category=category;
 				}
 			});
-			console.log(rObj.Name + ' ' + rObj.Category);
-			return rObj;
-		   // return arr;
+			return nObj;
 		});
+		return arr;
 	}
-
 	renderPosts(){
 		// var feed=[];
 		// feed=Domains.DomainList.Domain;
