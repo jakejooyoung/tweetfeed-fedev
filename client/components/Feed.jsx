@@ -23,39 +23,64 @@ const NpUI = {
   }
 }
 var categories= [
-	'bitcoin',
-	'millibit',
 	'millibitcoin',
+	'millibit',
+	'millicoin',
+	'bitcoin',
+	'mbitcoin',
+	'ubitcoin',
 	'mbit',
 	'bitcent',
+	'mbtc',	
 	'btc',
 	'bit',
-	'millicoin',
 	'nrl',
 	'hodl',
 	'tosh'
 ];
 const domains=Domains.DomainList.Domain;
 const domainsByCategory=[];
+categories.forEach(function(category){
+	domainsByCategory[category]=[];
+});
+
+
 export class Feed extends React.Component {
 	renderTitle(){ 
 		return <NpUI.Title user='Jake'/>
 	}
 	parseDomainArr(){
 		var arr= domains.map(function(obj){
-			var nObj={
+			var dn={
 				Name:obj._Name,
 				Category:''
 			};
-			nObj.Name=obj._Name;
-			categories.forEach(function(category){
-				if (!nObj.Category||nObj.Name.includes(category)&&category.length>nObj.Category.length){
-					nObj.Category=category;
+			categories.forEach(function(ctg){
+				// Domain has matching category 
+				if (dn.Name.includes(ctg)){
+					// Domain was not inserted into matching category array
+					// or category assigned was less specific than new category	
+					// TO-DO: rearrange categories by length.
+					if (!dn.Category||dn.Category.length<ctg.length){
+						// Previously inserted to byCategory array
+						if (dn.Category){
+							// Delete from old category array
+							var index=domainsByCategory[dn.Category].indexOf(dn);
+							domainsByCategory[dn.Category].splice(index,1);
+						}
+						// In all other cases assign dn.Category and insert to byCategory
+						dn.Category=ctg;
+						domainsByCategory[ctg].push(dn);
+					}
 				}
 			});
-			return nObj;
+			return dn;
 		});
-		console.log(arr[1].Name ,arr[1].Category);
+		// return arr;
+		domainsByCategory['bitcoin'].forEach(function (c){ console.log(c)});	
+		domainsByCategory['mbtc'].forEach(function (c){ console.log(c)});	
+		domainsByCategory['btc'].forEach(function (c){ console.log(c)});
+		console.log(domainsByCategory['bitcoin']);
 		return arr;
 	}
 	// dynamicSort(category) {
