@@ -9,36 +9,43 @@
     overflow: auto;
     right: 0;
     top: 0;
+    padding-top:60px;
 }
 
 
 /* COMPONENTS */
-.feed {
-	padding-top:50px;
+.feed-container{
 	margin:1px;
 	position: relative;
 	z-index: 0;
-
 }
 .post {
-	text-align: right;
+	text-align: left;
     position: relative;
-    margin: 0;
+    margin: 1px;
     z-index: 0;
     padding: 15px;
     background: #fff;
     // border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    color:#001d2f;
+    &:hover{
+    	background:rgba(230, 230, 230, 0.1);
+    }
 }
 .npUl{
 	.blip{
 		display: inline-block;
 	    margin: 5px;
-	    border-radius: 10px;
-	    color:#29b113;
-	    border: 1px solid;
+	    border-radius: 8px;
+	    border: solid 1px;
+	    background: white;
+	    font-weight: 100;
 	    p {
 		    margin: 8px;
+	    }
+	    &:hover{
+	    	border-color:#1DA1F2;
 	    }
 	}	
 }

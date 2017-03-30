@@ -32,7 +32,8 @@ const NpUI = {
   }
 }
 function formatWelcomeText(user) {
-  	return user+ '\'s Activities';
+  	// return user+ '\'s Activities';
+  	return 'Available Domains';
 }
 var categories= [
 	'millibitcoin',
