@@ -88,6 +88,14 @@ function parseDomainArr(){
 parseDomainArr();
 
 export class Feed extends React.Component {
+	render() {
+    	return (
+    		<div id='feed-container'>	
+				{this.renderTitle()}
+				{this.renderPosts()}
+			</div>
+		);
+ 	}
 	renderTitle(){ 
 		return <NpUI.Title user='Jake'/>
 	}
@@ -112,14 +120,6 @@ export class Feed extends React.Component {
 		});
 		return posts;
 	}
-	render() {
-    	return (
-    		<div id='feed-container'>	
-				{this.renderTitle()}
-				{this.renderPosts()}
-			</div>
-		);
- 	}
 }
 export class Repeat extends React.Component {
 	render(){
