@@ -111,11 +111,9 @@ export class Feed extends React.Component {
 			// Construct and return array of post for post of current index.
 			return (
 				<div key={obj} className='post'>
-					{obj}
 					<Repeat className='npUl' numTimes={postObj.length} >
    		   		{(index) => (<NpUI.Blip key={index} content={postObj[index].Name} />)}
 	   			</Repeat>
-				  <NpUI.Button action='yes'/>
 				</div>
 			);
 		});
