@@ -6,6 +6,10 @@ import React from 'react';
 // var json = require(path.join(__dirname, '../localdb/mbit-domains.json'));
 import Domains from 'Db/domains.json'
 
+const user = {
+	firstName: 'Jake',
+	lastName: 'Kim'
+}
 const NpUI = {
   Button: function Button(props) {
     return (
@@ -14,13 +18,21 @@ const NpUI = {
 	    </button>
 		);
   },
+  Blip: function Blip(props){
+		return (
+			<div className='blip'><p> {props.content} </p></div>
+		);
+  },
   Title: function Title(props) {
   	return (
   		<div className='np-title np-border'>
 		    <p> {formatWelcomeText(props.user)} </p>
-		</div>
-	);
+			</div>
+		);
   }
+}
+function formatWelcomeText(user) {
+  	return user+ '\'s Activities';
 }
 var categories= [
 	'millibitcoin',
@@ -79,73 +91,44 @@ export class Feed extends React.Component {
 	renderTitle(){ 
 		return <NpUI.Title user='Jake'/>
 	}
-
-	renderBoard(){
-		let items=[];
-
-		categories.forEach(function(category){
-			let parr=domainsByCategory[category];
-			items.push(
-				<div key={category} className='post'>
-					{category}
-					<Repeat className='feed' numTimes={parr.length} >
-		   		   		{(index) => <Blip key={index} content={parr[index].Name} />}
-		   			</Repeat>
-				    <NpUI.Button action='yes'/>
+	renderPosts(){
+		// This is where you set db call to get posts.
+		// e.g. get array of domains sorted by domain name.
+		let payload=categories;
+		// For each received data object, construct post.
+		let posts=payload.map(function(obj){
+			// Extrapolate data per post.
+			let postObj=domainsByCategory[obj];
+			// Construct and return array of post for post of current index.
+			return (
+				<div key={obj} className='post'>
+					{obj}
+					<Repeat className='npUl' numTimes={postObj.length} >
+   		   		{(index) => (<NpUI.Blip key={index} content={postObj[index].Name} />)}
+	   			</Repeat>
+				  <NpUI.Button action='yes'/>
 				</div>
 			);
 		});
-
-		return items;
+		return posts;
 	}
 	render() {
     	return (
     		<div id='feed-container'>	
 				{this.renderTitle()}
-				{this.renderBoard()}
+				{this.renderPosts()}
 			</div>
 		);
  	}
 }
 export class Repeat extends React.Component {
 	render(){
-		let items = [];
-		for (let i = 0; i < this.props.numTimes; i++) {
-			items.push(this.props.children(i));
-		}
-		return <div className={this.props.className}>{items}</div>;
+		let innerDivs = [];
+		for (let i = 0; i < this.props.numTimes; i++) { innerDivs.push(this.props.children(i)); }
+		return <div className={this.props.className}>{innerDivs}</div>;
 	}
 }
-export class Post extends React.Component {
-	renderButton(){
-		return <NpUI.Button action='yes'/>
-	}
-	render(){
-		return (
-			<div className='post'>
-				<h4>{this.key} </h4>
-				<p> {this.props.content} </p>
-			    {this.renderButton()}
-			</div>
-		);
-	}
-}
-export class Blip extends React.Component {
-	render(){
-		return (
-			<div className='bilp'>
-				<p> {this.props.content} </p>
-			</div>
-		);
-	}
-}
-const user = {
-	firstName: 'Jake',
-	lastName: 'Kim'
-}
-function formatWelcomeText(user) {
-  	return user+ '\'s Activities';
-}
+
 
 
 
