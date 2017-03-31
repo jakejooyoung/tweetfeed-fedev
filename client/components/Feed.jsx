@@ -1,55 +1,55 @@
 /*
     ./client/components/App.jsx
 */
-import React from 'react';
-// var json = require('json-loader!localdb/mbit-domains.json');
-// var json = require(path.join(__dirname, '../localdb/mbit-domains.json'));
-import Domains from 'Db/domains.json'
+import React from "react";
+// var json = require("json-loader!localdb/mbit-domains.json");
+// var json = require(path.join(__dirname, "../localdb/mbit-domains.json"));
+import Domains from "Db/domains.json"
 
 const user = {
-	firstName: 'Jake',
-	lastName: 'Kim'
+	firstName: "Jake",
+	lastName: "Kim"
 }
 const NpUI = {
   Button: function Button(props) {
     return (
-    	<button className={'btn '+props.action}> 
+    	<button className={"btn "+props.action}> 
 	    	Post
 	    </button>
 		);
   },
   Blip: function Blip(props){
 		return (
-			<div className='blip'><p> {props.content} </p></div>
+			<div className="blip"><p> {props.content} </p></div>
 		);
   },
   Title: function Title(props) {
   	return (
-  		<div className='np-title np-border'>
+  		<div className="np-title np-border">
 		    <p> {formatWelcomeText(props.user)} </p>
 			</div>
 		);
   }
 }
 function formatWelcomeText(user) {
-  	// return user+ '\'s Activities';
-  	return 'Available Domains';
+  	// return user+ "\"s Activities";
+  	return "Available Domains";
 }
 var categories= [
-	'millibitcoin',
-	'millibit',
-	'millicoin',
-	'bitcoin',
-	'mbitcoin',
-	'ubitcoin',
-	'mbit',
-	'bitcent',
-	'mbtc',	
-	'btc',
-	'bit',
-	'nrl',
-	'hodl',
-	'tosh'
+	"millibitcoin",
+	"millibit",
+	"millicoin",
+	"bitcoin",
+	"mbitcoin",
+	"ubitcoin",
+	"mbit",
+	"bitcent",
+	"mbtc",	
+	"btc",
+	"bit",
+	"nrl",
+	"hodl",
+	"tosh"
 ];
 const domains=Domains.DomainList.Domain;
 const domainsByCategory=[];
@@ -60,7 +60,7 @@ function parseDomainArr(){
 	domains.map(function(obj){
 		var dn={
 			Name:obj._Name,
-			Category:''
+			Category:""
 		};
 		categories.forEach(function(ctg){
 			// Domain has matching category 
@@ -91,14 +91,14 @@ parseDomainArr();
 export class Feed extends React.Component {
 	render() {
     	return (
-    		<div id='feed-container'>	
+    		<div id="feed-container">	
 				{this.renderTitle()}
 				{this.renderPosts()}
 			</div>
 		);
  	}
 	renderTitle(){ 
-		return <NpUI.Title user='Jake'/>
+		return <NpUI.Title user="Jake"/>
 	}
 	renderPosts(){
 		// This is where you set db call to get posts.
@@ -110,8 +110,8 @@ export class Feed extends React.Component {
 			let postObj=domainsByCategory[obj];
 			// Construct and return array of post for post of current index.
 			return (
-				<div key={obj} className='post'>
-					<Repeat className='npUl' numTimes={postObj.length} >
+				<div key={obj} className="post">
+					<Repeat className="npUl" numTimes={postObj.length} >
    		   		{(index) => (<NpUI.Blip key={index} content={postObj[index].Name} />)}
 	   			</Repeat>
 				</div>
@@ -127,7 +127,6 @@ export class Repeat extends React.Component {
 		return <div className={this.props.className}>{innerDivs}</div>;
 	}
 }
-
 
 
 
