@@ -20,14 +20,10 @@ export default class Menu extends React.Component {
         return (
         	<div>
 	    		<button onClick={this.handleClick}>
-	   				Click Me!
+	   				More Premium Domains
 	   			</button>
-				<Drawer right={true} open={this.state.isOpen} onChange={open => this.setState({ isOpen: open })}>
-					<ul>
-						<li>Home</li>
-						<li>About</li>
-						<li>Settings</li>
-					</ul>
+				<Drawer className="slidingMenu" width={400} right={true} open={this.state.isOpen} onChange={open => this.setState({ isOpen: open })}>
+					{this.props.children}
 				</Drawer>
 			</div>
  	    );
