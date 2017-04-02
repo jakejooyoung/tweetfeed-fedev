@@ -1,27 +1,35 @@
 import React from "react";
+import Drawer from 'react-motion-drawer';
 
 export default class Menu extends React.Component {
   	constructor(props) {
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
 		this.state = {
-		  isCollapsed: true
+		  isOpen: false
 		};
 	}
-	handleClick(e){
-	    e.preventDefault(e);
-	    console.log(this.state.isCollapsed);
+	handleClick(){
+	    console.log(this.state.isOpen);
 	    console.log('The link was clicked.');
     	this.setState((prevState, props) => ({
-		  isCollapsed: !prevState.isCollapsed
+		  isOpen: !prevState.isOpen
 		}));
 	}
     render() {
-    	const isCollapsed = this.state.isCollapsed;
         return (
-    		<button onClick={this.handleClick}>
-   				Click Me! {isCollapsed ? 'currently' : 'not'}
-   			</button>
+        	<div>
+	    		<button onClick={this.handleClick}>
+	   				Click Me!
+	   			</button>
+				<Drawer right={true} open={this.state.isOpen} onChange={open => this.setState({ isOpen: open })}>
+					<ul>
+						<li>Home</li>
+						<li>About</li>
+						<li>Settings</li>
+					</ul>
+				</Drawer>
+			</div>
  	    );
   	}
 }
