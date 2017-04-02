@@ -88,7 +88,7 @@ function parseDomainArr(){
 // [[k,{Name:x,Category:y}],[k,{Name:x,Category:y}]]
 parseDomainArr();
 
-export class Feed extends React.Component {
+export default class Feed extends React.Component {
 	render() {
     	return (
     		<div id="feed-container">	
