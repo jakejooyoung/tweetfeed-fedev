@@ -20,7 +20,7 @@ export default class Menu extends React.Component {
         return (
         	<div>
 	    		<button onClick={this.handleClick}>
-	   				More Premium Domains
+	   				{this.props.buttonName} 
 	   			</button>
 				<Drawer className="slidingMenu" width={400} right={true} open={this.state.isOpen} onChange={open => this.setState({ isOpen: open })}>
 					{this.props.children}
@@ -28,6 +28,9 @@ export default class Menu extends React.Component {
 			</div>
  	    );
   	}
+}
+Menu.defaultProps={
+	buttonName:"Menu"
 }
 // Menu.defaultProps = {
 //   	isCollapsed: true

@@ -15,7 +15,7 @@ export default class App extends React.Component {
 	// }
 	renderMenu(){
 		return (
-		  <Menu isCollapsed> 
+		  <Menu button="More Premium Domains" isCollapsed> 
 		  	{this.renderFeed()}
 		  </Menu>
 		);
@@ -25,7 +25,7 @@ export default class App extends React.Component {
 	}
 	render() {
 		return (
-			<div style={{textAlign: 'center'}}>
+			<div style={{textAlign: "center"}}>
 		    <h1>It's the Millibit Era!</h1>
 		    {this.renderMenu()}
 			</div>
