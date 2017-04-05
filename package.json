@@ -11,6 +11,7 @@
     "html-webpack-plugin": "^2.28.0",
     "path": "^0.12.7",
     "react": "^15.4.2",
+    "react-addons-update": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-motion-drawer": "^2.1.5",
     "webpack": "^2.2.1"

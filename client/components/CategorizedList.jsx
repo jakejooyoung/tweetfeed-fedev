@@ -1,6 +1,5 @@
 import React from "react";
-// var json = require("json-loader!localdb/mbit-domains.json");
-// var json = require(path.join(__dirname, "../localdb/mbit-domains.json"));
+import update from 'react-addons-update';
 import Domains from "Db/domains.json"
 
 const NpUI = {
@@ -13,7 +12,7 @@ const NpUI = {
   },
   Blip: function Blip(props){
 		return (
-			<div className="blip"><p> {props.content} </p></div>
+			<button className="blip" onClick={props.handleSelection}><p> {props.content} </p></button>
 		);
   },
   Title: function Title(props) {
@@ -38,8 +37,11 @@ var domains={
 export default class CategorizedList extends React.Component {	
   	constructor(props) {
 		super(props);
+		this.handleSelection = this.handleSelection.bind(this);
+		this.state = {
+		    selectedItems: []
+	  	};
 	}
-
 	sortByCategory(){
 		// Category names to sort list by.  
 		var categories=[];
@@ -84,7 +86,6 @@ export default class CategorizedList extends React.Component {
 			if (!item.hasOwnProperty("Category")){
 				item.Category="uncategorized"
 				uncategorized.push(item);
-				console.log(item);
 			}
 			count++;
 			return item;
@@ -93,7 +94,16 @@ export default class CategorizedList extends React.Component {
 		categorized["uncategorized"]=uncategorized;
 		return [categorized, count];
 	}
-
+	handleSelection(item){
+		// let i=indexOf.this.state.selectedItems[item];
+		// if (i<0){
+		// 	this.setState(update(this.state, {selectedItems: {$push: [item]}}));
+		// } else {
+		// 	this.state.selectedItems.splice(i, 1);
+		// }
+		this.setState(update(this.state, {selectedItems: {$unshift: [item]}}));
+	    console.log(this.state.selectedItems);
+	}
 	render(){
 		// This is where you set db call to get posts.
 		// e.g. get array of domains sorted by domain name.
@@ -102,18 +112,24 @@ export default class CategorizedList extends React.Component {
 		var count=data[1];
 		let categories=Object.keys(payload);
 		var wrapperType=this.props.wrapperType;
+
 		// Construct and return array of containers for list of current index.
-		var div=categories.map(function(category){
-			let i=payload[category].length;
-			return (
-				<div key={category} className={wrapperType}>
-					<Repeat className="npUl" numTimes={i?i:0} >
-	   		   			{(index) => (<NpUI.Blip key={index} content={payload[category][index].Name} />)}
-		   			</Repeat>
-				</div>
-			);
-		});
-		return <div>{div}</div>;
+		var divs=categories.map(
+			function(category){
+				var arr=payload[category];
+				return (
+					<div key={category} className={wrapperType}>
+						<Repeat className="npUl" numTimes={arr.length?arr.length:0}>
+		   		   			{(index) => 
+		   		   				(<NpUI.Blip key={index} content={arr[index].Name} 
+		   		   							handleSelection={() => this.handleSelection(arr[index].Name)}/>)}
+			   			</Repeat>
+					</div>
+				);
+			}, 
+			this
+		);
+		return <div>{divs}</div>;
 	}
 }
 export class Repeat extends React.Component {

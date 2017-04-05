@@ -43,8 +43,9 @@ body{
 	    p {
 		    margin: 8px;
 	    }
-	    &:hover{
+	    &:hover, &.selected{
 	    	border-color:#1DA1F2;
+	    	color:#1DA1F2;
 	    }
 	}	
 }

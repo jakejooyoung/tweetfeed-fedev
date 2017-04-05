@@ -41,17 +41,27 @@ export default class Feed extends React.Component {
     	return (
     	<div id="feed-container">	
 				{this.renderTitle()}
-				{this.renderPosts()}
+				{this.renderCategorizedList()}
 			</div>
 		);
  	}
 	renderTitle(){ 
 		return <NpUI.Title user="Jake"/>
 	}
-	renderPosts(){
+	renderCallToAction(){
+		var actionType="inquiry"; // sign-up / sign in / buy / inquire
+		return <CallToAction actionType={actionType}/>
+	}
+	renderCategorizedList(){
 		return <CategorizedList wrapperType="post"/>
 	}
+	renderPosts(){
+		return <Posts wrapperType="post"/>
+	}
 }
+Feed.defaultProps = {
+	
+};
 export class Repeat extends React.Component {
 	render(){
 		let innerDivs = [];
