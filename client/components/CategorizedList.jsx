@@ -12,7 +12,7 @@ const NpUI = {
   },
   Blip: function Blip(props){
 		return (
-			<button className="blip" onClick={props.handleSelection}><p> {props.content} </p></button>
+			<button className={[props.className,"blip"].join(" ")} onClick={props.handleSelection}><p> {props.content} </p></button>
 		);
   },
   Title: function Title(props) {
@@ -117,12 +117,17 @@ export default class CategorizedList extends React.Component {
 		var divs=categories.map(
 			function(category){
 				var arr=payload[category];
+				var selectedItems=this.state.selectedItems;
 				return (
 					<div key={category} className={wrapperType}>
 						<Repeat className="npUl" numTimes={arr.length?arr.length:0}>
 		   		   			{(index) => 
-		   		   				(<NpUI.Blip key={index} content={arr[index].Name} 
-		   		   							handleSelection={() => this.handleSelection(arr[index].Name)}/>)}
+		   		   				(<NpUI.Blip 
+		   		   					className={selectedItems.includes(arr[index].Name)?"selected":"unselected"} 
+		   		   					key={index} 
+		   		   					content={arr[index].Name} 
+		   		   					handleSelection={
+		   		   						() => this.handleSelection(arr[index].Name)}/>)}
 			   			</Repeat>
 					</div>
 				);
