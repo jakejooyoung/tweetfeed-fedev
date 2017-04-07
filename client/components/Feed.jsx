@@ -28,7 +28,7 @@ const NpUI = {
   	return (
   		<div className="np-title np-border">
 		    <p> {formatWelcomeText(props.user)} </p>
-			</div>
+		</div>
 		);
   }
 }

@@ -38,7 +38,7 @@ export default class App extends React.Component {
 		)
 	}
 	render() {
-		var isMenuOnRightSide=true;
+		var isMenuOnRightSide=false;
 		var menuWidth=400;
 		return (
 			<div className="app">

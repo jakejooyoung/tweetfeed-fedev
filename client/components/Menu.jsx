@@ -11,28 +11,31 @@ export default class Menu extends React.Component {
 	}
 	handleClick(){
 	    console.log(this.state.isOpen);
-	    console.log('The link was clicked.');
     	this.setState((prevState, props) => ({
 		  isOpen: !prevState.isOpen
 		}));
 	}
     render() {
+    	var menuStyle={
+    		"width":this.props.width
+    	}
+    	var overlay=null;
+	    if (this.state.isOpen) {
+	      	overlay=<div className="menuOverlay" onClick={this.handleClick}/>;
+	    } else {
+	    	overlay=null
+	    }
         return (
-        	<div className="drawerContainer">
-        		<div className="drawerPlaceholder">
+        	<div className="menuContainer" style={menuStyle}>
+        		<div className="menuPlaceholder">
 	        		<button onClick={this.handleClick}>
 		   				{this.props.buttonName} 
 		   			</button>
         		</div>
-   				<Drawer 
-					className="drawer" 
-					handleWidth={0}
-					width={this.props.width}
-					right={this.props.isMenuOnRightSide} 
-					open={this.state.isOpen} 
-					onChange={open => this.setState({ isOpen: open })}>
+        		<div className={this.state.isOpen?"menu selected":"menu unselected"}>		
 					{this.props.children}
-				</Drawer>
+        		</div>
+        		{overlay}
 			</div>
  	    );
   	}
@@ -40,6 +43,7 @@ export default class Menu extends React.Component {
 Menu.defaultProps={
 	buttonName:"Menu"
 }
+
 // Menu.defaultProps = {
 //   	isCollapsed: true
 // };
