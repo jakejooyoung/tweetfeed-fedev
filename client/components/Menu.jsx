@@ -1,5 +1,4 @@
 import React from "react";
-import Drawer from 'react-motion-drawer';
 
 export default class Menu extends React.Component {
   	constructor(props) {

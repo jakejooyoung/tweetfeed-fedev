@@ -13,7 +13,6 @@
     "react": "^15.4.2",
     "react-addons-update": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-motion-drawer": "^2.1.5",
     "react-stack-grid": "^0.2.0",
     "webpack": "^2.2.1"
   },
