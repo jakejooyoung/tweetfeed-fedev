@@ -872,6 +872,10 @@ base64-js@^1.0.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
 
+batch-processor@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
+
 batch@0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.5.3.tgz#3f3414f380321743bfc1042f9a83ff1d5824d464"
@@ -913,6 +917,10 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bowser@^1.0.0:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.6.1.tgz#9157e9498f456e937173a2918f3b2161e5353eb3"
 
 brace-expansion@^1.0.0:
   version "1.1.6"
@@ -1553,6 +1561,12 @@ domutils@1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
+easy-css-transform-builder@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/easy-css-transform-builder/-/easy-css-transform-builder-0.0.2.tgz#a541667a7919e17f67d82b11d3cb55fdd5433022"
+  dependencies:
+    invariant "^2.2.2"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -1566,6 +1580,12 @@ ee-first@1.1.1:
 electron-to-chromium@^1.2.5:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.2.7.tgz#4f748061407e478c76256d04496972b71f647407"
+
+element-resize-detector@^1.1.11:
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.1.11.tgz#34dc9aff624239e0ebdba6cdadeeae88a4cf0b1b"
+  dependencies:
+    batch-processor "^1.0.0"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -1638,6 +1658,10 @@ etag@~1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.0.tgz#6f631aef336d6c46362b51764044ce216be3c051"
 
+ev-emitter@~1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.0.3.tgz#ee5ef74b6ed28d911b32ddcbfc97867f580937bc"
+
 eventemitter3@1.x.x:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-1.2.0.tgz#1c86991d816ad1e504750e73874224ecf3bec508"
@@ -1657,6 +1681,10 @@ evp_bytestokey@^1.0.0:
   resolved "https://registry.yarnpkg.com/evp_bytestokey/-/evp_bytestokey-1.0.0.tgz#497b66ad9fef65cd7c08a6180824ba1476b66e53"
   dependencies:
     create-hash "^1.1.1"
+
+exenv@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.1.tgz#75de1c8dee02e952b102aa17f8875973e0df14f9"
 
 expand-brackets@^0.1.4:
   version "0.1.5"
@@ -2129,6 +2157,10 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
+hyphenate-style-name@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.2.tgz#31160a36930adaf1fc04c6074f7eb41465d4ec4b"
+
 iconv-lite@~0.4.13:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
@@ -2140,6 +2172,12 @@ icss-replace-symbols@^1.0.2:
 ieee754@^1.1.4:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
+
+imagesloaded@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/imagesloaded/-/imagesloaded-4.1.1.tgz#53b5b66615360850a5a264b1293e7f4d06d3bd51"
+  dependencies:
+    ev-emitter "~1.0.0"
 
 in-publish@^2.0.0:
   version "2.0.0"
@@ -2178,11 +2216,18 @@ ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
+inline-style-prefixer@^2.0.4:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-2.0.5.tgz#c153c7e88fd84fef5c602e95a8168b2770671fe7"
+  dependencies:
+    bowser "^1.0.0"
+    hyphenate-style-name "^1.0.1"
+
 interpret@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.1.tgz#d579fb7f693b858004947af39fa0db49f795602c"
 
-invariant@^2.2.0:
+invariant@^2.2.0, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -2470,6 +2515,10 @@ loader-utils@^1.0.1, loader-utils@^1.0.2:
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
+lodash._getnative@^3.0.0:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
+
 lodash.assign@^4.0.3, lodash.assign@^4.0.6, lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
@@ -2481,6 +2530,22 @@ lodash.camelcase@^4.3.0:
 lodash.clonedeep@^4.3.2:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+
+lodash.isarguments@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
+
+lodash.isarray@^3.0.0:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
+
+lodash.keys@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/lodash.keys/-/lodash.keys-3.1.2.tgz#4dbc0472b156be50a0b286855d1bd0b0c656098a"
+  dependencies:
+    lodash._getnative "^3.0.0"
+    lodash.isarguments "^3.0.0"
+    lodash.isarray "^3.0.0"
 
 lodash.memoize@^4.1.0:
   version "4.1.2"
@@ -2498,7 +2563,7 @@ lodash.uniq@^4.3.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.2.0:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -3381,6 +3446,13 @@ rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-addons-transition-group@^15.3.2:
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/react-addons-transition-group/-/react-addons-transition-group-15.5.0.tgz#4a7dd48d2061f49a8977396f9e7c3f40f1b07a40"
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
 react-addons-update@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-addons-update/-/react-addons-update-15.4.2.tgz#43a9578e3b46bc5f7eed2ba52560dd57a8aff918"
@@ -3417,6 +3489,28 @@ react-motion@^0.4.7:
   dependencies:
     performance-now "^0.2.0"
     raf "^3.1.0"
+
+react-sizeme@^2.2.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/react-sizeme/-/react-sizeme-2.3.1.tgz#a5d7817e727024084c758b1bc1a217826f358dd6"
+  dependencies:
+    element-resize-detector "^1.1.11"
+    invariant "^2.2.2"
+    lodash "^4.17.4"
+
+react-stack-grid@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-stack-grid/-/react-stack-grid-0.2.0.tgz#e10dc42917be9bc8c1a68337393d45d9eda686ee"
+  dependencies:
+    easy-css-transform-builder "^0.0.2"
+    exenv "^1.2.1"
+    imagesloaded "^4.1.1"
+    inline-style-prefixer "^2.0.4"
+    invariant "^2.2.2"
+    react-addons-transition-group "^15.3.2"
+    react-sizeme "^2.2.0"
+    shallowequal "^0.2.2"
+    throttle-debounce "^1.0.1"
 
 react@^15.4.2:
   version "15.4.2"
@@ -3744,6 +3838,12 @@ shallow-clone@^0.1.2:
     lazy-cache "^0.2.3"
     mixin-object "^2.0.1"
 
+shallowequal@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-0.2.2.tgz#1e32fd5bcab6ad688a4812cb0cc04efc75c7014e"
+  dependencies:
+    lodash.keys "^3.1.2"
+
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
@@ -3970,6 +4070,10 @@ tar@^2.0.0, tar@~2.2.1:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+throttle-debounce@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-1.0.1.tgz#dad0fe130f9daf3719fdea33dc36a8e6ba7f30b5"
 
 timers-browserify@^2.0.2:
   version "2.0.2"

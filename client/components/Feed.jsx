@@ -6,6 +6,7 @@ import React from "react";
 // var json = require(path.join(__dirname, "../localdb/mbit-domains.json"));
 import Domains from "Db/domains.json"
 import CategorizedList from "./CategorizedList.jsx"
+
 const user = {
 	firstName: "Jake",
 	lastName: "Kim"
@@ -39,7 +40,7 @@ function formatWelcomeText(user) {
 export default class Feed extends React.Component {
 	render() {
     	return (
-    	<div id="feed-container">	
+    		<div className="feed-container">	
 				{this.renderTitle()}
 				{this.renderCategorizedList()}
 			</div>

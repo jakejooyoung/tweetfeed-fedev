@@ -19,10 +19,18 @@ export default class Menu extends React.Component {
     render() {
         return (
         	<div>
-	    		<button onClick={this.handleClick}>
-	   				{this.props.buttonName} 
-	   			</button>
-				<Drawer className="drawer" width={400} right={false} open={this.state.isOpen} onChange={open => this.setState({ isOpen: open })}>
+        		<div className="drawerPlaceholder">
+	        		<button onClick={this.handleClick}>
+		   				{this.props.buttonName} 
+		   			</button>
+        		</div>
+   				<Drawer 
+					className="drawer" 
+					handleWidth={0}
+					width={this.props.width}
+					right={this.props.isMenuOnRightSide} 
+					open={this.state.isOpen} 
+					onChange={open => this.setState({ isOpen: open })}>
 					{this.props.children}
 				</Drawer>
 			</div>

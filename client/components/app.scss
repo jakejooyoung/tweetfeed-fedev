@@ -1,14 +1,31 @@
 body{
 	//required for react-motion-drawer
 	overflow: hidden;
+	margin: 0;
 }
 /* LAYOUTS */
-#app-container {
-	
+.app{
+	position: relative;
+	display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+    & > div{
+    	transition: width 0.7s ease-out;
+    }
+	.main{
+		width: 100%;
+		text-align: center;
+	}
+	.side{
+		height: 100vh;
+		background: yellow;
+		z-index: 1000;
+	}	
 }
 
+
 /* COMPONENTS */
-#feed-container {
+.feed-container {
     // width: 400px;
     width:100%;
     position: fixed;
@@ -16,14 +33,14 @@ body{
     overflow: auto;
     // right: 0;
     top: 0;
-    padding-top:60px;
+    padding-top:80px;
 }
 .post {
 	text-align: left;
     position: relative;
     margin: 1px;
     z-index: 0;
-    padding: 15px;
+    padding: 18px;
     background: #fff;
     // border-radius: 3px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -54,6 +71,10 @@ body{
 	    }
 	}	
 }
+/* Responsive */
+.card{
+	background: green;
+}
 
 /* UI GLOBALS */
 body {
@@ -70,10 +91,9 @@ body {
 }
 .drawer{
 	background:white;
-    padding:inherit;
 }
 .np-title{
-	padding:5px 15px;
+    padding: 18px;
 	position: fixed;
 	top: 0;
 	height: 50px;
