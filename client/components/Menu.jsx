@@ -22,7 +22,7 @@ export default class Menu extends React.Component {
 	    		<button onClick={this.handleClick}>
 	   				{this.props.buttonName} 
 	   			</button>
-				<Drawer className="slidingMenu" width={400} right={true} open={this.state.isOpen} onChange={open => this.setState({ isOpen: open })}>
+				<Drawer className="drawer" width={400} right={false} open={this.state.isOpen} onChange={open => this.setState({ isOpen: open })}>
 					{this.props.children}
 				</Drawer>
 			</div>
