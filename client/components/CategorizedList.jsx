@@ -101,8 +101,15 @@ export default class CategorizedList extends React.Component {
 		// } else {
 		// 	this.state.selectedItems.splice(i, 1);
 		// }
-		this.setState(update(this.state, {selectedItems: {$unshift: [item]}}));
-	    console.log(this.state.selectedItems);
+		if (this.state.selectedItems.includes(item)){
+			let array = this.state.selectedItems;
+		    let index = array.indexOf(item)
+			array.splice(index, 1);
+			this.setState({people: array });
+		} else {
+			this.setState(update(this.state, {selectedItems: {$unshift: [item]}}));
+	   		console.log(this.state.selectedItems);
+		}	
 	}
 	render(){
 		// This is where you set db call to get posts.
