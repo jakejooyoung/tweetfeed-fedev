@@ -18,7 +18,7 @@ export default class Menu extends React.Component {
 	}
     render() {
         return (
-        	<div>
+        	<div className="drawerContainer">
         		<div className="drawerPlaceholder">
 	        		<button onClick={this.handleClick}>
 		   				{this.props.buttonName} 
