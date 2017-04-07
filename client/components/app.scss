@@ -31,7 +31,7 @@ body{
 			display: flex;
 		    flex-direction:row;
 			.menu{
-			    background: yellow;
+			    background: white;
 			    height: 100%;
 			    width: inherit;
 			    position: fixed;
@@ -78,7 +78,7 @@ body{
     overflow: auto;
     // right: 0;
     top: 0;
-    padding-top:80px;
+    margin-top:80px;
     position: fixed;
 }
 .post {
