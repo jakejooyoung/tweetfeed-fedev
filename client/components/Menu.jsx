@@ -27,6 +27,7 @@ export default class Menu extends React.Component {
         return (
         	<div className="menuContainer" style={menuStyle}>
         		<div className="menuPlaceholder">
+        			<h3> Yes! This domain is available for purchase. </h3>
 	        		<button onClick={this.handleClick}>
 		   				{this.props.buttonName} 
 		   			</button>

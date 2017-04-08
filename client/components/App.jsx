@@ -16,7 +16,7 @@ export default class App extends React.Component {
 		};
 		return (
 			<div className="main" style={mainStyle}>
-		    <h1>It's the Millibit Era!</h1>
+				<br/>
 				<Responsive/>
 			</div>
 		)
