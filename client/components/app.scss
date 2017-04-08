@@ -13,8 +13,9 @@ body{
     	transition: width 0.7s ease-out;
     }
 	.main{
-		width: 100%;
 		text-align: center;
+	    width: 90%;
+    	margin: 0 auto;
 	}
 	.side{
 		height: 100vh;
@@ -24,7 +25,7 @@ body{
 		.menuContainer{
 			height: 100%;
 			margin: 20px 0;
-			border:1px solid #949090;
+			border:1px solid #c5c3c3;
 			border-top:none;
 			border-bottom:none;
 			position: fixed;
