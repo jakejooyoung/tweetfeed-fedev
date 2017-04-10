@@ -12,7 +12,7 @@ const NpUI = {
   },
   Blip: function Blip(props){
 		return (
-			<button className={[props.className,"blip"].join(" ")} onClick={props.handleSelection}><p> {props.content} </p></button>
+			<div className={[props.className,"blip"].join(" ")} onClick={props.handleSelection}><p> {props.content} </p></div>
 		);
   },
   Title: function Title(props) {
@@ -141,7 +141,7 @@ export default class CategorizedList extends React.Component {
 			}, 
 			this
 		);
-		return <div>{divs}</div>;
+		return <div className="feed-container">	{divs}</div>;
 	}
 }
 export class Repeat extends React.Component {

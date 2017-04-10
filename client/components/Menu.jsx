@@ -14,6 +14,21 @@ export default class Menu extends React.Component {
 		  isOpen: !prevState.isOpen
 		}));
 	}
+	validateCurrencyInput(event){
+		let val=event.target.value;
+		let regex = /(?=.)^\$?(([1-9][0-9]{0,8}(,[0-9]{3})*)|0)?(\.[0-9]{1,2})?$/;
+
+		if(!val.match(regex)) {
+			event.preventDefault();
+			// Prevent writing invalid value
+			if ( val.length==1 || val.charAt(val.length-1)!=="." || val.substring(0,val.length-1).includes(".") ){ 
+				event.target.value=val.substring(0, val.length-1);
+			} 
+		} else {
+			// Append $ sign to value if none
+			event.target.value=(val.charAt(0)!=="$")?"$"+val:val;
+		}
+	}
     render() {
     	var menuStyle={
     		"width":this.props.width
@@ -23,11 +38,19 @@ export default class Menu extends React.Component {
         return (
         	<div className="menuContainer" style={menuStyle}>
         		<div className="menuPlaceholder">
+        			<h4> This domain is available for purchase. </h4>
         			<h1> nrllace.com </h1>
-        			<h3> Yes! This domain is available for purchase. </h3>
-	        		<button onClick={this.handleClick}>
-		   				{this.props.buttonName} 
+
+    			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
+				        <input name="offer" placeholder="Enter Your Offer" onChange={this.validateCurrencyInput}></input>
+				        <input type="text" name="email" placeholder="Enter Your Email"></input>
+				    </form>
+        			<button onClick={this.openForm}>
+        				Make Offer
 		   			</button>
+	        		<div onClick={this.handleClick}>
+		   				See more domains
+		   			</div>
         		</div>
         		<div className={this.state.isOpen?"menu selected":"menu unselected"}>		
 					{this.props.children}

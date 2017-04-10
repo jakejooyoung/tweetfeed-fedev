@@ -128,6 +128,30 @@ body{
 /* UI GLOBALS */
 body {
 	font-family: 'Roboto', sans-serif;
+	h4 {
+		color: grey;
+		font-weight: 100;
+		margin: 0;
+	}
+	button{
+	    height: 40px;
+	    text-align: center;
+	    width: 100%;
+	    background: #00ff00;
+	    border: 1px solid;
+	}
+	form {
+		margin: 10px auto;
+		padding: 0;
+		& >*{
+			border:0;
+		    box-shadow: 0.1px 0.1px 0.1px 0.1px;
+			width: 100%;
+			margin: 10px 0;
+			height: 30px;
+			text-align: center;
+		}
+	}
 }
 .np-title{
 	min-height: 80px;
