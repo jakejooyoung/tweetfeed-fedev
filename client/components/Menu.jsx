@@ -13,11 +13,11 @@ export class AlignMiddle extends React.Component {
 	    	"display": "table-cell",
 	    	"width": "100%",
 	    	"height": "100%",
-	    	"vertical-align":"middle"
+	    	"verticalAlign":"middle"
 	    }
 	  	return (
 	  		<div className={this.props.className}>
-	  			<div style={table}>
+	  			<div style={Object.assign(table,this.props.style)}>
 	  				<div style={tablecell}>
 	  					{this.props.children}
 	  				</div>
@@ -26,7 +26,36 @@ export class AlignMiddle extends React.Component {
 	  	)
 	}
 }
-
+export class Fixed extends React.Component {
+  	constructor(props) {
+		super(props);
+	}
+  	render(){
+  		const fixed={
+			"height": this.props.height,
+			"position": "fixed",
+			"display": "table",
+			"zIndex": "10",
+			"width": "inherit",
+			"background":"#fbfbfb"
+	    }
+	    const bottom={ "bottom": 0 }
+	    const top={ "top":0 }
+	    const tablecell={
+	    	"display": "table-cell",
+	    	"width": "100%",
+	    	"height": "100%",
+	    	"verticalAlign":"middle"
+	    }
+	    return (
+	    	<div style={Object.assign(fixed,this.props.top?top:bottom)}>
+	    		<div style={tablecell}>
+	    			{this.props.children}
+	    		</div>
+	    	</div>
+	    )
+	}
+}
 export default class Menu extends React.Component {
   	constructor(props) {
 		super(props);
@@ -57,17 +86,23 @@ export default class Menu extends React.Component {
 		}
 	}
     render() {
-    	var menuStyle={
-    		"width":this.props.width
+    	const fixedHeight=this.props.fixedHeight+"px";
+    	const fixedTop=this.props.fixedTop;
+    	var menuContainer={
+    		"width":this.props.width,
     	}
-    	var overlay=(this.state.isOpen)?<div className="menuOverlay" onClick={this.handleClick}/>:null;
+    	var menu={
+		    "height": "calc(100% - "+fixedHeight+")",
+		    "bottom":fixedTop?"0":"initial",
+		    "top":!fixedTop?"0":"initial",
+    	}
 
+    	var overlay=(this.state.isOpen)?<div className="menuOverlay" onClick={this.handleClick}/>:null;
         return (
-        	<div className="menuContainer" style={menuStyle}>
+        	<div className="menuContainer" style={menuContainer}>
     			<AlignMiddle className="menuPlaceholder">
         			<h4> This domain is available for purchase. </h4>
         			<h1> nrllace.com </h1>
-
     			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
 				        <input name="offer" placeholder="Enter Your Offer" onChange={this.validateCurrencyInput}></input>
 				        <input type="text" name="email" placeholder="Enter Your Email"></input>
@@ -79,8 +114,11 @@ export default class Menu extends React.Component {
 		   				See more domains <span>&#8594;</span>
 		   			</div>
 		   		</AlignMiddle>
-        		<div className={this.state.isOpen?"menu selected":"menu unselected"}>		
+        		<div className={this.state.isOpen?"menu selected":"menu unselected"} style={menu}>		
 					{this.props.children}
+			  		<Fixed top={fixedTop} height={fixedHeight}> 
+			  			Available Domains 
+			  		</Fixed>	
         		</div>
         		{overlay}
 			</div>

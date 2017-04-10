@@ -141,7 +141,7 @@ export default class CategorizedList extends React.Component {
 			}, 
 			this
 		);
-		return <div className="feed-container">	{divs}</div>;
+		return <div>{divs}</div>;
 	}
 }
 export class Repeat extends React.Component {

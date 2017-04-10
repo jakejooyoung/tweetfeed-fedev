@@ -31,14 +31,15 @@ export default class App extends React.Component {ㅊ
 		}
 		return (
 			<div className="side" style={sideStyle}>
-				<Menu buttonName={domainParking.buttonName} width={sideStyle.minWidth} isMenuOnRightSide={isMenuOnRightSide} isCollapsed> 
-		  		<div className="np-title np-border">
-		  			<div className="np-inner">
-		  				<p> Available Domains</p>
-		  			</div>
-					</div>    		
+				<Menu 
+					fixedTop={false}
+					fixedHeight={80}
+					width={sideStyle.minWidth} 
+					buttonName={domainParking.buttonName} 
+					isMenuOnRightSide={isMenuOnRightSide} 
+					isCollapsed> 
 					<CategorizedList wrapperType="post"/>
-			  </Menu>
+		  	</Menu>
 			</div>
 		)
 	}
