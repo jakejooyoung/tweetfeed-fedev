@@ -37,7 +37,9 @@ export class Fixed extends React.Component {
 			"display": "table",
 			"zIndex": "10",
 			"width": "inherit",
-			"background":"#fbfbfb"
+			"background":"#fbfbfb",
+			"borderTop":"1px solid #b8b6b6",
+			"borderBottom":"1px"
 	    }
 	    const bottom={ "bottom": 0 }
 	    const top={ "top":0 }
