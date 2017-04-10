@@ -7,32 +7,6 @@ import Menu from "./Menu.jsx";
 import Responsive from "./Responsive.jsx";
 import CategorizedList from "./CategorizedList.jsx"
 
-// import Landing from "./Landing.jsx";
-const NpUI = {
-  Button: function Button(props) {
-    return (
-    	<button className={"btn "+props.action}> 
-	    	Post
-	    </button>
-		);
-  },
-  Blip: function Blip(props){
-		return (
-			<div className="blip"><p> {props.content} </p></div>
-		);
-  },
-  Title: function Title(props) {
-  	return (
-  		<div className="np-title np-border">
-		    <p> {formatWelcomeText(props.user)} </p>
-		</div>
-		);
-  }
-}
-function formatWelcomeText(user) {
-  	// return user+ "\"s Activities";
-  	return "Available Domains";
-}
 export default class App extends React.Component {ㅊ
 	renderCategorizedList(){
 		return <CategorizedList wrapperType="post"/>
@@ -58,7 +32,11 @@ export default class App extends React.Component {ㅊ
 		return (
 			<div className="side" style={sideStyle}>
 				<Menu buttonName={domainParking.buttonName} width={sideStyle.minWidth} isMenuOnRightSide={isMenuOnRightSide} isCollapsed> 
-			  	<NpUI.Title user="Jake"/>	    		
+		  		<div className="np-title np-border">
+		  			<div className="np-inner">
+		  				<p> Available Domains</p>
+		  			</div>
+					</div>    		
 					<CategorizedList wrapperType="post"/>
 			  </Menu>
 			</div>
