@@ -27,7 +27,7 @@ export default class App extends React.Component {ㅊ
 		  "minWidth":menuWidth,
 		};
 		const domainParking={
-			buttonName:"More Premium Domains"
+			buttonName:"Inquire"
 		}
 		return (
 			<div className="side" style={sideStyle}>

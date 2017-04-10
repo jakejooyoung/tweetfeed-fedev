@@ -18,12 +18,8 @@ export default class Menu extends React.Component {
     	var menuStyle={
     		"width":this.props.width
     	}
-    	var overlay=null;
-	    if (this.state.isOpen) {
-	      	overlay=<div className="menuOverlay" onClick={this.handleClick}/>;
-	    } else {
-	    	overlay=null
-	    }
+    	var overlay=(this.state.isOpen)?<div className="menuOverlay" onClick={this.handleClick}/>:null;
+
         return (
         	<div className="menuContainer" style={menuStyle}>
         		<div className="menuPlaceholder">
