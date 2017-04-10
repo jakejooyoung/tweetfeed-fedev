@@ -24,7 +24,7 @@ body{
 		display: flex;
 		flex-direction:column;
 		.menuContainer{
-			height:  calc(100vh - 80px);
+			height:  100vh;
 			margin: 20px 0;
 			border:1px solid #c5c3c3;
 			border-top:none;
@@ -34,12 +34,12 @@ body{
 		    flex-direction:row;
 			.menu{
 			    background: white;
-			    height: 100%;
+			    height: calc(100% - 80px);
 			    width: inherit;
 			    position: fixed;
-			    top: 0;
+			    top: 80px;
 			    left:-400px;
-
+			    overflow: auto;
 			    -webkit-transition: .15s ease-in-out;
 				-moz-transition: .15s ease-in-out;
 				-o-transition: .15s ease-in-out;
