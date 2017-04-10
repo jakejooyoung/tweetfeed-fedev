@@ -12,7 +12,7 @@ const NpUI = {
   },
   Blip: function Blip(props){
 		return (
-			<div className={[props.className,"blip"].join(" ")} onClick={props.handleSelection}><p> {props.content} </p></div>
+			<div role="button" className={[props.className,"blip"].join(" ")} onClick={props.handleSelection}><p> {props.content} </p></div>
 		);
   },
   Title: function Title(props) {

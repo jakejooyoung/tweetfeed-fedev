@@ -1,4 +1,31 @@
 import React from "react";
+export class AlignMiddle extends React.Component {
+  	constructor(props) {
+		super(props);
+	}
+  	render(){
+  		const table={
+	      "display": "table",
+	      "width": "100%",
+	      "height": "100%"
+	    }
+	    const tablecell={
+	    	"display": "table-cell",
+	    	"width": "100%",
+	    	"height": "100%",
+	    	"vertical-align":"middle"
+	    }
+	  	return (
+	  		<div className={this.props.className}>
+	  			<div style={table}>
+	  				<div style={tablecell}>
+	  					{this.props.children}
+	  				</div>
+	  			</div>
+	  		</div>
+	  	)
+	}
+}
 
 export default class Menu extends React.Component {
   	constructor(props) {
@@ -37,7 +64,7 @@ export default class Menu extends React.Component {
 
         return (
         	<div className="menuContainer" style={menuStyle}>
-        		<div className="menuPlaceholder">
+    			<AlignMiddle className="menuPlaceholder">
         			<h4> This domain is available for purchase. </h4>
         			<h1> nrllace.com </h1>
 
@@ -45,13 +72,13 @@ export default class Menu extends React.Component {
 				        <input name="offer" placeholder="Enter Your Offer" onChange={this.validateCurrencyInput}></input>
 				        <input type="text" name="email" placeholder="Enter Your Email"></input>
 				    </form>
-        			<button onClick={this.openForm}>
-        				Make Offer
+        			<button role="button" onClick={this.openForm}>
+        				Submit this Offer
 		   			</button>
-	        		<div onClick={this.handleClick}>
-		   				See more domains
+	        		<div role="button" className="seeMore" onClick={this.handleClick}>
+		   				See more domains <span>&#8594;</span>
 		   			</div>
-        		</div>
+		   		</AlignMiddle>
         		<div className={this.state.isOpen?"menu selected":"menu unselected"}>		
 					{this.props.children}
         		</div>

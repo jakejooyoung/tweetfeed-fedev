@@ -25,7 +25,6 @@ body{
 		flex-direction:column;
 		.menuContainer{
 			height:  100vh;
-			margin: 20px 0;
 			border:1px solid #c5c3c3;
 			border-top:none;
 			border-bottom:none;
@@ -63,9 +62,14 @@ body{
 			.menuPlaceholder{
 				text-align: center;
 				width: 100%;
-				padding:30px;
+				padding:0 30px;
 				.left-border{
 					
+				}
+				.seeMore{
+				    margin-top: 50px;
+				    color: #2165ea;
+				    font-weight: 100;
 				}
 			}	
 		}
@@ -114,9 +118,7 @@ body{
 	    &:hover, &.selected{
 	    	border-color:#1DA1F2;
 	    	color:#1DA1F2;
-	    	font-weight:400;
-	    	cursor: pointer; 
-	    	cursor: hand;
+	    	font-weight:400; 
 	    }
 	}	
 }
@@ -128,6 +130,9 @@ body{
 /* UI GLOBALS */
 body {
 	font-family: 'Roboto', sans-serif;
+	[role=button]{
+		cursor: pointer;
+	}
 	h4 {
 		color: grey;
 		font-weight: 100;
@@ -138,7 +143,7 @@ body {
 	    text-align: center;
 	    width: 100%;
 	    background: #00ff00;
-	    border: 1px solid;
+	    border:none;
 	}
 	form {
 		margin: 10px auto;
@@ -147,7 +152,7 @@ body {
 			border:0;
 		    box-shadow: 0.1px 0.1px 0.1px 0.1px;
 			width: 100%;
-			margin: 10px 0;
+			margin: 5px 0;
 			height: 30px;
 			text-align: center;
 		}
