@@ -3,20 +3,46 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-import Feed from "./Feed.jsx";
 import Menu from "./Menu.jsx";
 import Responsive from "./Responsive.jsx";
+import CategorizedList from "./CategorizedList.jsx"
 
 // import Landing from "./Landing.jsx";
-
-export default class App extends React.Component {
+const NpUI = {
+  Button: function Button(props) {
+    return (
+    	<button className={"btn "+props.action}> 
+	    	Post
+	    </button>
+		);
+  },
+  Blip: function Blip(props){
+		return (
+			<div className="blip"><p> {props.content} </p></div>
+		);
+  },
+  Title: function Title(props) {
+  	return (
+  		<div className="np-title np-border">
+		    <p> {formatWelcomeText(props.user)} </p>
+		</div>
+		);
+  }
+}
+function formatWelcomeText(user) {
+  	// return user+ "\"s Activities";
+  	return "Available Domains";
+}
+export default class App extends React.Component {ㅊ
+	renderCategorizedList(){
+		return <CategorizedList wrapperType="post"/>
+	}
 	renderMain(isMenuOnRightSide){
 		const mainStyle = {
 		  "order":(isMenuOnRightSide?0:1)
 		};
 		return (
 			<div className="main" style={mainStyle}>
-				<br/>
 				<Responsive/>
 			</div>
 		)
@@ -32,7 +58,8 @@ export default class App extends React.Component {
 		return (
 			<div className="side" style={sideStyle}>
 				<Menu buttonName={domainParking.buttonName} width={sideStyle.minWidth} isMenuOnRightSide={isMenuOnRightSide} isCollapsed> 
-			  	<Feed type="domains"/>
+			  	<NpUI.Title user="Jake"/>	    		
+					<CategorizedList wrapperType="post"/>
 			  </Menu>
 			</div>
 		)

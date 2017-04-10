@@ -24,7 +24,7 @@ body{
 		display: flex;
 		flex-direction:column;
 		.menuContainer{
-			height: 100%;
+			height:  calc(100vh - 80px);
 			margin: 20px 0;
 			border:1px solid #c5c3c3;
 			border-top:none;
