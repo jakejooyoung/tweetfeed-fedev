@@ -98,7 +98,7 @@ body{
 	    border-radius: 8px;
 	    border: solid 1px #bfbfbf;
 	    background: white;
-	    font-weight: 200;
+	    font-weight: 400;
 	    outline:none;
 	    font-size:14px;
 	    p {
@@ -107,7 +107,6 @@ body{
 	    &:hover, &.selected{
 	    	border-color:#1DA1F2;
 	    	color:#1DA1F2;
-	    	font-weight:400; 
 	    }
 	}	
 }
@@ -139,7 +138,7 @@ body {
 		padding: 0;
 		& >*{
 			border:0;
-		    box-shadow: 0.1px 0.1px 0.1px 0.1px;
+		    border-bottom: 1px solid #bdbdbd;
 			width: 100%;
 			margin: 5px 0;
 			height: 30px;

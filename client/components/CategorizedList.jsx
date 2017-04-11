@@ -119,7 +119,7 @@ export default class CategorizedList extends React.Component {
 		var count=data[1];
 		let categories=Object.keys(payload);
 		var wrapperType=this.props.wrapperType;
-
+		const inheritWidth={"width":"inherit"};
 		// Construct and return array of containers for list of current index.
 		var divs=categories.map(
 			function(category){
@@ -141,7 +141,12 @@ export default class CategorizedList extends React.Component {
 			}, 
 			this
 		);
-		return <div>{divs}</div>;
+		return (
+			<div style={inheritWidth}>
+				{divs}
+				{this.props.children}
+			</div>
+		)
 	}
 }
 export class Repeat extends React.Component {

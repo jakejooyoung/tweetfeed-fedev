@@ -37,9 +37,7 @@ export class Fixed extends React.Component {
 			"display": "table",
 			"zIndex": "10",
 			"width": "inherit",
-			"background":"#fbfbfb",
-			"borderTop":"1px solid #b8b6b6",
-			"borderBottom":"1px"
+			"background":"#fbfbfb"
 	    }
 	    const bottom={ "bottom": 0 }
 	    const top={ "top":0 }
@@ -117,10 +115,7 @@ export default class Menu extends React.Component {
 		   			</div>
 		   		</AlignMiddle>
         		<div className={this.state.isOpen?"menu selected":"menu unselected"} style={menu}>		
-					{this.props.children}
-			  		<Fixed top={fixedTop} height={fixedHeight}> 
-			  			Available Domains 
-			  		</Fixed>	
+					{this.props.children}	
         		</div>
         		{overlay}
 			</div>
