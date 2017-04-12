@@ -36,9 +36,9 @@ export class Fixed extends React.Component {
 	    )
 	}
 }
-export default class App extends React.Component {ㅊ
-	renderCategorizedList(){
-		return <CategorizedList wrapperType="post"/>
+export default class App extends React.Component {
+	constructor(props) {
+		super(props);
 	}
 	renderMain(isMenuOnRightSide){
 		const mainStyle = {
@@ -51,25 +51,20 @@ export default class App extends React.Component {ㅊ
 		)
 	}
 	renderSide(isMenuOnRightSide,menuWidth){
+		const fixedTop=true;
 		const sideStyle = {
 		  "order":(isMenuOnRightSide?1:0),
 		  "minWidth":menuWidth,
 		};
-		const domainParking={
-			buttonName:"Inquire"
-		}
 		return (
 			<div className="side" style={sideStyle}>
 				<Menu 
-					fixedTop={false}
+					fixedTop={fixedTop}
 					fixedHeight={80}
 					width={sideStyle.minWidth} 
-					buttonName={domainParking.buttonName} 
 					isMenuOnRightSide={isMenuOnRightSide} 
 					isCollapsed> 
-					<CategorizedList wrapperType="post">
-						<Fixed height={80} top={false}>Hello</Fixed>
-					</CategorizedList>
+					<CategorizedList fixedTop={fixedTop} wrapperType="post"/>
 		  	</Menu>
 			</div>
 		)

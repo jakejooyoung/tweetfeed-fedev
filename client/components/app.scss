@@ -53,8 +53,7 @@ body{
 			    height: 100%;
 			    position: fixed;
 			    background: black;
-			    transition:.3s ease-in-out;
-			    opacity: 0.5;
+		        opacity: 0.5;
 			    top: 0;
 			    z-index: -1;
 			}
@@ -105,8 +104,12 @@ body{
 		    margin: 8px;
 	    }
 	    &:hover, &.selected{
-	    	border-color:#1DA1F2;
-	    	color:#1DA1F2;
+	    	// specific for domain app
+    		color: #0079ff;
+    		border-color:#1DA1F2;
+    		// regular
+	    	// border-color:#1DA1F2;
+	    	// color:#1DA1F2;
 	    }
 	}	
 }
@@ -116,6 +119,12 @@ body{
 }
 
 /* UI GLOBALS */
+.subaction{
+	font-size: 10px;
+	color:#0079ff;
+	text-decoration: underline;
+	padding:0 5px;
+}
 body {
 	font-family: 'Roboto', sans-serif;
 	[role=button]{
@@ -130,7 +139,8 @@ body {
 	    height: 40px;
 	    text-align: center;
 	    width: 100%;
-	    background: #00ff00;
+	    background: #0a91e4;
+	    color:white;
 	    border:none;
 	}
 	form {
@@ -143,41 +153,8 @@ body {
 			margin: 5px 0;
 			height: 30px;
 			text-align: center;
+			background:none;
 		}
 	}
 }
-.np-title{
-	min-height: 80px;
-	position: fixed;
-	display: table;
-	top: 0;
-	height: 50px;
-	z-index: 10;
-	width: inherit;
-	background:#fbfbfb;
-	border-bottom: 0;
-	p {
-		position: inherit;
-	}
-}
-.np-inner{
-	display: table-cell;
-	vertical-align: middle;
-	padding: 0 18px;
-}
-.np-border{
-	box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-}
-.btn {
-    font: inherit;
-    bottom: 16px;
-    width: 70px;
-    padding: 4px 15px;
-    border-radius: 3px;
-    transition: background .2s;
-    border: 1px solid #03a9f4;
-    &.yes {
-    	background-color: #03a9f4;
-    	color:white;
-    }
-}
+

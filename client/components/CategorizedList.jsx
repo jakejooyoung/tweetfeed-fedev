@@ -1,28 +1,8 @@
 import React from "react";
 import update from 'react-addons-update';
 import Domains from "Db/domains.json"
+import {Fixed,Repeat,Blip} from "./NopainUI.jsx"
 
-const NpUI = {
-  Button: function Button(props) {
-    return (
-    	<button className={"btn "+props.action}> 
-	    	Post
-	    </button>
-		);
-  },
-  Blip: function Blip(props){
-		return (
-			<div role="button" className={[props.className,"blip"].join(" ")} onClick={props.handleSelection}><p> {props.content} </p></div>
-		);
-  },
-  Title: function Title(props) {
-  	return (
-  		<div className="np-title np-border">
-		    <p> {formatWelcomeText(props.user)} </p>
-			</div>
-		);
-  }
-}
 const domainCategories= [ 
 	"millibitcoin", "millibit", "millicoin", 
 	"bitcoin", "mbitcoin", "ubitcoin", 
@@ -33,12 +13,16 @@ var domains={
 	"List":Domains.DomainList.Domain,
 	"Categories": domainCategories,
 }
-
 export default class CategorizedList extends React.Component {	
   	constructor(props) {
-		super(props);
+  		super(props);		
+		// This is where you set db call to get posts.
+		// e.g. get array of domains sorted by domain name.
+  		let data=this.sortByCategory();
 		this.handleSelection = this.handleSelection.bind(this);
 		this.state = {
+			items:data[0],
+		    count:data[1],
 		    selectedItems: []
 	  	};
 	}
@@ -95,12 +79,6 @@ export default class CategorizedList extends React.Component {
 		return [categorized, count];
 	}
 	handleSelection(item){
-		// let i=indexOf.this.state.selectedItems[item];
-		// if (i<0){
-		// 	this.setState(update(this.state, {selectedItems: {$push: [item]}}));
-		// } else {
-		// 	this.state.selectedItems.splice(i, 1);
-		// }
 		if (this.state.selectedItems.includes(item)){
 			let array = this.state.selectedItems;
 		    let index = array.indexOf(item)
@@ -111,49 +89,58 @@ export default class CategorizedList extends React.Component {
 	   		console.log(this.state.selectedItems);
 		}	
 	}
-	render(){
-		// This is where you set db call to get posts.
-		// e.g. get array of domains sorted by domain name.
-		let data=this.sortByCategory();
-		var payload=data[0];
-		var count=data[1];
-		let categories=Object.keys(payload);
-		var wrapperType=this.props.wrapperType;
-		const inheritWidth={"width":"inherit"};
+	renderItems(){
+		var payload=this.state.items;
+		let selected=this.state.selectedItems;
 		// Construct and return array of containers for list of current index.
-		var divs=categories.map(
+		return Object.keys(payload).map(
 			function(category){
-				var arr=payload[category];
-				var selectedItems=this.state.selectedItems;
+				let arr=payload[category];
 				return (
-					<div key={category} className={wrapperType}>
+					<div key={category} className={this.props.wrapperType}>
 						<Repeat className="npUl" numTimes={arr.length?arr.length:0}>
-		   		   			{(index) => 
-		   		   				(<NpUI.Blip 
-		   		   					className={selectedItems.includes(arr[index].Name)?"selected":"unselected"} 
-		   		   					key={index} 
-		   		   					content={arr[index].Name} 
-		   		   					handleSelection={
-		   		   						() => this.handleSelection(arr[index].Name)}/>)}
+		   		   			{(index) => (<Blip 
+	   		   					className={selected.includes(arr[index].Name)?"selected":"unselected"} 
+	   		   					key={index} 
+	   		   					content={arr[index].Name} 
+	   		   					handleSelection={() => this.handleSelection(arr[index].Name)}/>
+	   		   				)}
 			   			</Repeat>
 					</div>
 				);
 			}, 
 			this
 		);
+	}
+	flushSelections(){
+		this.setState({selectedItems:[]});
+	}
+	renderFakeChildren(){
+		if (this.state.selectedItems.length){
+			return (
+				<span>{this.state.selectedItems.length} Domains Selected 
+					<a role="button" className="subaction" onClick={() => this.flushSelections()}>Clear</a>
+				</span>
+			)
+		} else {
+			return (<span>Select from {this.state.count} domains</span>)
+		}
+	}
+
+	renderFixedDiv(){
 		return (
-			<div style={inheritWidth}>
-				{divs}
-				{this.props.children}
+			<Fixed height={80} fixedTop={this.props.fixedTop}>
+				{this.renderFakeChildren()}
+			</Fixed>
+		)	
+	}
+	render(){
+		return (
+			<div style={{"width":"inherit"}}>
+				{this.renderItems()}
+				{this.renderFixedDiv()}
 			</div>
 		)
-	}
-}
-export class Repeat extends React.Component {
-	render(){
-		var innerDivs = [];
-		for (let i = 0; i < this.props.numTimes; i++) { innerDivs.push(this.props.children(i)); }
-		return <div className={this.props.className}>{innerDivs}</div>;
 	}
 }
 
