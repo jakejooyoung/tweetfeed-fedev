@@ -1,8 +1,7 @@
 import React from "react";
 import update from 'react-addons-update';
 import Domains from "Db/domains.json"
-import {Fixed,Repeat,Blip} from "./NopainUI.jsx"
-import ActionIcons from "./Icons.jsx"
+import {ActionIcons, Fixed, Repeat, Blip} from "./NopainUI.jsx"
 
 const domainCategories= [ 
 	"millibitcoin", "millibit", "millicoin", 
@@ -19,66 +18,16 @@ export default class CategorizedList extends React.Component {
   		super(props);		
 		// This is where you set db call to get posts.
 		// e.g. get array of domains sorted by domain name.
-  		let data=this.sortByCategory();
+  		// let data=this.sortByCategory();
 		this.handleSelection = this.handleSelection.bind(this);
+		this.resetSelections = this.resetSelections.bind(this);
 		this.state = {
-			items:data[0],
-		    count:data[1],
+			items:this.props.items,
+		    count:this.props.count,
 		    selectedItems: []
 	  	};
 	}
-	sortByCategory(){
-		// Category names to sort list by.  
-		var categories=[];
-		// List you'd like to categorize.
-		var list=[];
-		// This is the array we will be returning. 
-		// Arrays of items indexed by category
-		var categorized=[];
-		var uncategorized=[];
-
-		// This is code specific to domain parking app.
-		categories=domains.Categories;
-		list=domains.List;
-
-		// Create arrays for each category
-		categories.forEach(function(category){
-			categorized[category]=[];
-		});
-
-		var count=0;
-		// New array to fill results with.
-		list.map(function(obj){
-			var item={ "Name":obj._Name };
-			categories.map(function(category){
-				// Item name includes string for this category 
-				if (item.Name.includes(category)){
-					if (!item.hasOwnProperty("Category")){
-						// In all other cases assign dn.Category and insert to categorized
-						item.Category=category;
-						categorized[item.Category].push(item);						
-					} else if (item.Category.length<category.length){
-						// Delete from old category array
-						// If you want list to be more inclusive (e.g. category 'bit' for both 'bitcoin' and 'bittorrent')
-						// categorized[category].splice(-1, 1);
-						categorized[item.Category].splice(-1, 1);
-						// In all other cases assign dn.Category and insert to categorized
-						item.Category=category;
-						categorized[item.Category].push(item);		
-					} 
-				}
-			});
-			if (!item.hasOwnProperty("Category")){
-				item.Category="uncategorized"
-				uncategorized.push(item);
-			}
-			count++;
-			return item;
-		});
-		//Include unmatched items in a separate category.
-		categorized["uncategorized"]=uncategorized;
-		return [categorized, count];
-	}
+	
 	handleSelection(item){
 		if (this.state.selectedItems.includes(item)){
 			let array = this.state.selectedItems;
@@ -113,47 +62,108 @@ export default class CategorizedList extends React.Component {
 			this
 		);
 	}
-	flushSelections(){
-		this.setState({selectedItems:[]});
-	}
-	renderListHeader(len){
-		let style={
-			"display":"inlineBlock",
-			"verticalAlign": "sub"
-		}
-		if (len){
-			return (
-				<span style={style}>
-					{len} Domain{(len==1)?"":"s"} Selected 
-					<a role="button" className="subaction" onClick={() => this.flushSelections()}>Clear All</a>
-				</span>
-			)
-		} else {
-			return (<span style={style}> Select from {this.state.count} domains</span>)
-		}
-	}
-	renderActionIcons(){
-		return (
-			<ActionIcons 
-				disabled={!this.state.selectedItems.length} 
-				onClick={() => this.flushSelections()} 
+	resetSelections(){ this.setState({selectedItems:[]}); }
+	// What can users do with selections?
+	renderSelectionsHeader(){
+		let totalCount=this.state.count;
+		//Hint: when making into separate component, pass state.sI as one of the props.
+		let selectionsCount=this.state.selectedItems.length;
+		// Title displays call to action or summary of selections. 
+		const title=(
+			(!selectionsCount) ? 
+				[totalCount,this.props.titleText].join(" "): 
+				[selectionsCount, this.props.itemName, (selectionsCount>1?"s":""),"Selected"].join(" ")
+		)
+		// Reset Button lets users reset their selections
+		const resetBtn=(
+			(selectionsCount) ? 
+				<a onClick={() => this.resetSelections()}
+					role="button" 
+					className="subaction" 
+					> Clear All </a> : 
+				null
+		)
+		// Main Button is what users can do with their selections.
+		const mainBtn=(
+			<ActionIcons onClick={() => this.resetSelections()} 
+				disabled={!selectionsCount} 
 				float="right" 
-				icon="share"
-				/>
+				icon="share"/>
+		)
+		return (
+			<Fixed height={80} fixedTop={this.props.fixedTop}>
+				{title}
+				{resetBtn}
+				{mainBtn}
+			</Fixed>
 		)
 	}
 	render(){
 		return (
 			<div style={{"width":"inherit"}}>
+				{this.renderSelectionsHeader()}
 				{this.renderItems()}
-				<Fixed height={80} fixedTop={this.props.fixedTop}>
-					{this.renderListHeader(this.state.selectedItems.length)}
-					{this.renderActionIcons()}
-				</Fixed>
 			</div>
 		)
 	}
 }
 
+var some=function sortByCategory(){
+	// Category names to sort list by.  
+	let categories=[];
+	// List you'd like to categorize.
+	let list=[];
+	// This is the array we will be returning. 
+	// Arrays of items indexed by category
+	let categorized=[];
+	let uncategorized=[];
 
+	// This is code specific to domain parking app.
+	categories=domains.Categories;
+	list=domains.List;
 
+	// Create arrays for each category
+	categories.forEach(function(category){
+		categorized[category]=[];
+	});
+
+	var count=0;
+	// New array to fill results with.
+	list.map(function(obj){
+		var item={ "Name":obj._Name };
+		categories.map(function(category){
+			// Item name includes string for this category 
+			if (item.Name.includes(category)){
+				if (!item.hasOwnProperty("Category")){
+					// In all other cases assign dn.Category and insert to categorized
+					item.Category=category;
+					categorized[item.Category].push(item);						
+				} else if (item.Category.length<category.length){
+					// Delete from old category array
+					// If you want list to be more inclusive (e.g. category 'bit' for both 'bitcoin' and 'bittorrent')
+					// categorized[category].splice(-1, 1);
+					categorized[item.Category].splice(-1, 1);
+					// In all other cases assign dn.Category and insert to categorized
+					item.Category=category;
+					categorized[item.Category].push(item);		
+				} 
+			}
+		});
+		if (!item.hasOwnProperty("Category")){
+			item.Category="uncategorized"
+			uncategorized.push(item);
+		}
+		count++;
+		return item;
+	});
+	//Include unmatched items in a separate category.
+	categorized["uncategorized"]=uncategorized;
+	return [categorized, count];
+}
+let data=some();
+CategorizedList.defaultProps={
+	items:data[0],
+	count:data[1],
+  	titleText:"Millibit Era Domains",
+	itemName:"Domain"
+}
