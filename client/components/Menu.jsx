@@ -46,13 +46,13 @@ export default class Menu extends React.Component {
 	}
 
 	renderMenu(){
-    	const menu={
+    	const headerHeightOffset={
 		    "height": "calc(100% - "+this.props.fixedHeight+"px)",
 		    "bottom":this.props.fixedTop?"0":"initial",
 		    "top":this.props.fixedTop?"initial":"0",
     	}
 		return (
-    		<div className={this.state.isOpen?"menu selected":"menu unselected"} style={menu}>		
+    		<div className={this.state.isOpen?"menu selected":"menu unselected"} style={headerHeightOffset}>		
 				{this.props.children}	
     		</div>
 		)
