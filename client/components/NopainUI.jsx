@@ -93,6 +93,7 @@ const colors={
   red:"tomato",
   grey:"grey"
 }
+
 export class ActionIcons extends React.Component {
   constructor(props) {
     super(props);
@@ -162,11 +163,11 @@ export class ActionIcons extends React.Component {
     }
 }
 ActionIcons.childContextTypes = {
-    reactIconBase: React.PropTypes.object
+  reactIconBase: React.PropTypes.object
 };
 ActionIcons.defaultProps={
   size:24,
   sizebump:2,
-    float:"right",
-    disabled:true
+  float:"right",
+  disabled:true
 }

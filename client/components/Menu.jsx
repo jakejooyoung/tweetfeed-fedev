@@ -38,7 +38,7 @@ export default class Menu extends React.Component {
     			<button role="button" onClick={this.openForm}>
     				Submit this Offer
 	   			</button>
-        		<div role="button" style={{"marginTop": "50px"}} className="seeMore" onClick={this.toggleMenu}>
+        		<div role="button" style={{"marginTop": "50px"}} className="hyperlink" onClick={this.toggleMenu}>
 	   				See more domains <span>&#8594;</span>
 	   			</div>
 	   		</AlignMiddle>

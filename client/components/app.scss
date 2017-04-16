@@ -1,5 +1,7 @@
 :root{
 	--primary-color: red;
+	--link-color: #0079ff;
+	--success-color:#69ff00;
 }
 body{
 	//required for react-motion-drawer
@@ -60,18 +62,6 @@ body{
 			    top: 0;
 			    z-index: -1;
 			}
-			.menuPlaceholder{
-				text-align: center;
-				width: 100%;
-				.left-border{
-					
-				}
-				.seeMore{
-				    margin-top: 50px;
-				    color: #2165ea;
-				    font-weight: 100;
-				}
-			}	
 		}
 	}	
 }
@@ -124,9 +114,19 @@ body{
 /* UI GLOBALS */
 .subaction{
 	font-size: 10px;
-	color:#0079ff;
-	text-decoration: underline;
+	color: var(--link-color, #1da1f2);
 	padding:0 7px;
+    &:hover{
+    	text-decoration: underline;
+    }
+}
+.hyperlink{
+	margin-top: 30px;
+    color: var(--link-color, #1da1f2);
+    font-weight: 100;
+    &:hover{
+    	text-decoration: underline;
+    }
 }
 body {
 	font-family: 'Roboto', sans-serif;
@@ -142,8 +142,8 @@ body {
 	    height: 40px;
 	    text-align: center;
 	    width: 100%;
-	    background: #0a91e4;
-	    color:white;
+	    background:  var(--success-color, deepskyblue);
+	    color:black;
 	    border:none;
 	}
 	form {
