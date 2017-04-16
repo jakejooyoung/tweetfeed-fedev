@@ -65,14 +65,16 @@ export default class CategorizedList extends React.Component {
 	resetSelections(){ this.setState({selectedItems:[]}); }
 	// What can users do with selections?
 	renderSelectionsHeader(){
-		let totalCount=this.state.count;
 		//Hint: when making into separate component, pass state.sI as one of the props.
 		let selectionsCount=this.state.selectedItems.length;
+		let totalCount=this.state.count;
 		// Title displays call to action or summary of selections. 
 		const title=(
-			(!selectionsCount) ? 
+			<span>
+			{(!selectionsCount) ? 
 				[totalCount,this.props.titleText].join(" "): 
-				[selectionsCount, this.props.itemName, (selectionsCount>1?"s":""),"Selected"].join(" ")
+				[selectionsCount, this.props.itemName+(selectionsCount>1?"s":""),"Selected"].join(" ")}
+			</span>
 		)
 		// Reset Button lets users reset their selections
 		const resetBtn=(
@@ -80,7 +82,7 @@ export default class CategorizedList extends React.Component {
 				<a onClick={() => this.resetSelections()}
 					role="button" 
 					className="subaction" 
-					> Clear All </a> : 
+					>Clear All</a> : 
 				null
 		)
 		// Main Button is what users can do with their selections.
@@ -91,7 +93,7 @@ export default class CategorizedList extends React.Component {
 				icon="share"/>
 		)
 		return (
-			<Fixed height={80} fixedTop={this.props.fixedTop}>
+			<Fixed padding="0 18px" height={80} fixedTop={this.props.fixedTop}>
 				{title}
 				{resetBtn}
 				{mainBtn}

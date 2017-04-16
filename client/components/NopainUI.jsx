@@ -5,6 +5,38 @@ import FaEnvelopeO from 'react-icons/fa/envelope-o';
 import FaHeartO from 'react-icons/fa/heart-o';
 import FaClose from 'react-icons/fa/close';
 
+export class AlignMiddle extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    render(){
+      const table={
+        "display": "table",
+        "width": "100%",
+        "height": "100%"
+      }
+      const tablecell={
+        "display": "table-cell",
+        "width": "100%",
+        "height": "100%",
+        "verticalAlign":"middle",
+        "padding":this.props.padding
+      }
+      const innerMost={
+        "verticalAlign":"sub",
+        "display":"inline"
+      }
+      return (
+          <div className={this.props.className} style={Object.assign(table,this.props.style)}>
+            <div style={tablecell}>
+                <span style={innerMost}>
+                  {this.props.children} 
+                </span>
+            </div>
+          </div>
+      )
+  }
+}
 export class Fixed extends React.Component {
   	constructor(props) {
   		super(props);
@@ -18,24 +50,18 @@ export class Fixed extends React.Component {
   			"width": "inherit",
   			"background":"#fbfbfb"
 	    }
-	    const tablecell={
-	    	"display": "table-cell",
-	    	"width": "100%",
-	    	"height": "100%",
-	    	"verticalAlign":"middle",
-	    	"padding":"18px"
-	    }
 	    const bottom={ "borderTop":"1px solid lightgrey","bottom": 0 };
 	    const top={ "borderBottom":"1px solid lightgrey","top":0 };
 	    return (
 	    	<div style={Object.assign(fixed,this.props.fixedTop?top:bottom)}>
-	    		<div style={tablecell}>
-	    			{this.props.children}
-	    		</div>
+            <AlignMiddle padding={this.props.padding}>
+	    			  {this.props.children}
+            </AlignMiddle>
 	    	</div>
 	    )
 	}
 }
+
 export class Repeat extends React.Component {
   constructor(props) {
     super(props);

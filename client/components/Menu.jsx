@@ -1,31 +1,5 @@
 import React from "react";
-export class AlignMiddle extends React.Component {
-  	constructor(props) {
-		super(props);
-	}
-  	render(){
-  		const table={
-	      "display": "table",
-	      "width": "100%",
-	      "height": "100%"
-	    }
-	    const tablecell={
-	    	"display": "table-cell",
-	    	"width": "100%",
-	    	"height": "100%",
-	    	"verticalAlign":"middle"
-	    }
-	  	return (
-	  		<div className={this.props.className}>
-	  			<div style={Object.assign(table,this.props.style)}>
-	  				<div style={tablecell}>
-	  					{this.props.children}
-	  				</div>
-	  			</div>
-	  		</div>
-	  	)
-	}
-}
+import {AlignMiddle} from "./NopainUI.jsx"
 
 export default class Menu extends React.Component {
   	constructor(props) {
@@ -71,19 +45,21 @@ export default class Menu extends React.Component {
     	var overlay=(this.state.isOpen)?<div className="menuOverlay" onClick={this.handleClick}/>:null;
         return (
         	<div className="menuContainer" style={menuContainer}>
-    			<AlignMiddle className="menuPlaceholder">
-        			<h4> This domain is available for purchase. </h4>
-        			<h1> nrllace.com </h1>
-    			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
-				        <input name="offer" placeholder="Enter Your Offer" onChange={this.validateCurrencyInput}></input>
-				        <input type="text" name="email" placeholder="Enter Your Email"></input>
-				    </form>
-        			<button role="button" onClick={this.openForm}>
-        				Submit this Offer
-		   			</button>
-	        		<div role="button" className="seeMore" onClick={this.handleClick}>
-		   				See more domains <span>&#8594;</span>
-		   			</div>
+    			<AlignMiddle padding="0 30px">
+    				<div >
+	        			<h4> This domain is available for purchase. </h4>
+	        			<h1> nrllace.com </h1>
+	    			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
+					        <input name="offer" placeholder="Enter Your Offer" onChange={this.validateCurrencyInput}></input>
+					        <input type="text" name="email" placeholder="Enter Your Email"></input>
+					    </form>
+	        			<button role="button" onClick={this.openForm}>
+	        				Submit this Offer
+			   			</button>
+		        		<div role="button" className="seeMore" onClick={this.handleClick}>
+			   				See more domains <span>&#8594;</span>
+			   			</div>
+			   		</div>
 		   		</AlignMiddle>
         		<div className={this.state.isOpen?"menu selected":"menu unselected"} style={menu}>		
 					{this.props.children}	
