@@ -29,14 +29,14 @@ export default class Menu extends React.Component {
 	renderMenuPlaceholder(){
 		return (
 			<AlignMiddle style={{"textAlign":"center"}} padding="0 30px">
-    			<h4> This domain is available for purchase. </h4>
-    			<h1> nrllace.com </h1>
+    			<div className="welcomeText"> Did you want this domain? </div>
+    			<h1 style={{"marginBottom":"100px"}}> nrllace.com </h1>
 			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
-			        <input name="offer" placeholder="Enter Your Offer" onChange={this.validateCurrencyInput}></input>
-			        <input type="text" name="email" placeholder="Enter Your Email"></input>
+			        <input name="offer" placeholder="Tell us a price you'd like" onChange={this.validateCurrencyInput}></input>
+			        <input type="text" name="email" placeholder="Enter your email"></input>
 			    </form>
     			<button role="button" onClick={this.openForm}>
-    				Submit this Offer
+    				Submit Interest
 	   			</button>
         		<div role="button" style={{"marginTop": "50px"}} className="hyperlink" onClick={this.toggleMenu}>
 	   				See more domains <span>&#8594;</span>

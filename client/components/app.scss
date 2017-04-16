@@ -1,12 +1,41 @@
 :root{
 	--primary-color: red;
 	--link-color: #0079ff;
-	--success-color:#69ff00;
+	--success-color:#25ff3a;
 }
 body{
 	//required for react-motion-drawer
 	overflow: hidden;
 	margin: 0;
+	font-weight: 100;
+	font-family: 'Roboto', sans-serif;
+	[role=button]{
+		cursor: pointer;
+	}
+	h1,h2,h3,h4,p{
+		font-weight: 100;
+	}
+	button{
+	    height: 40px;
+	    text-align: center;
+	    width: 100%;
+	    background:  var(--success-color, deepskyblue);
+	    color:black;
+	    border:none;
+	}
+	form {
+		margin: 10px auto;
+		padding: 0;
+		& >*{
+			border:0;
+		    border-bottom: 1px solid #bdbdbd;
+			width: 100%;
+			margin: 5px 0;
+			height: 30px;
+			text-align: center;
+			background:none;
+		}
+	}
 }
 /* LAYOUTS */
 .app{
@@ -123,41 +152,13 @@ body{
 .hyperlink{
 	margin-top: 30px;
     color: var(--link-color, #1da1f2);
-    font-weight: 100;
     &:hover{
     	text-decoration: underline;
     }
 }
-body {
-	font-family: 'Roboto', sans-serif;
-	[role=button]{
-		cursor: pointer;
-	}
-	h4 {
-		color: grey;
-		font-weight: 100;
-		margin: 0;
-	}
-	button{
-	    height: 40px;
-	    text-align: center;
-	    width: 100%;
-	    background:  var(--success-color, deepskyblue);
-	    color:black;
-	    border:none;
-	}
-	form {
-		margin: 10px auto;
-		padding: 0;
-		& >*{
-			border:0;
-		    border-bottom: 1px solid #bdbdbd;
-			width: 100%;
-			margin: 5px 0;
-			height: 30px;
-			text-align: center;
-			background:none;
-		}
-	}
+.welcomeText {
+	color:grey;
+	font-weight: 100;
 }
+
 
