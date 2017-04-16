@@ -6,36 +6,7 @@ import ReactDOM from "react-dom";
 import Menu from "./Menu.jsx";
 import Responsive from "./Responsive.jsx";
 import CategorizedList from "./CategorizedList.jsx"
-export class Fixed extends React.Component {
-  	constructor(props) {
-		super(props);
-	}
-  	render(){
-  		const fixed={
-			"height": this.props.height,
-			"position": "fixed",
-			"display": "table",
-			"zIndex": "10",
-			"width": "inherit",
-			"background":"#fbfbfb"
-	    }
-	    const bottom={ "bottom": 0 }
-	    const top={ "top":0 }
-	    const tablecell={
-	    	"display": "table-cell",
-	    	"width": "100%",
-	    	"height": "100%",
-	    	"verticalAlign":"middle"
-	    }
-	    return (
-	    	<div style={Object.assign(fixed,this.props.top?top:bottom)}>
-	    		<div style={tablecell}>
-	    			{this.props.children}
-	    		</div>
-	    	</div>
-	    )
-	}
-}
+
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -65,7 +36,7 @@ export default class App extends React.Component {
 					isMenuOnRightSide={isMenuOnRightSide} 
 					isCollapsed> 
 					<CategorizedList fixedTop={fixedTop} wrapperType="post"/>
-		  	</Menu>
+		  		</Menu>
 			</div>
 		)
 	}

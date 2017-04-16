@@ -2,6 +2,7 @@ import React from "react";
 import update from 'react-addons-update';
 import Domains from "Db/domains.json"
 import {Fixed,Repeat,Blip} from "./NopainUI.jsx"
+import ActionIcons from "./Icons.jsx"
 
 const domainCategories= [ 
 	"millibitcoin", "millibit", "millicoin", 
@@ -115,30 +116,40 @@ export default class CategorizedList extends React.Component {
 	flushSelections(){
 		this.setState({selectedItems:[]});
 	}
-	renderFakeChildren(){
-		if (this.state.selectedItems.length){
+	renderListHeader(len){
+		let style={
+			"display":"inlineBlock",
+			"verticalAlign": "sub"
+		}
+		if (len){
 			return (
-				<span>{this.state.selectedItems.length} Domains Selected 
-					<a role="button" className="subaction" onClick={() => this.flushSelections()}>Clear</a>
+				<span style={style}>
+					{len} Domain{(len==1)?"":"s"} Selected 
+					<a role="button" className="subaction" onClick={() => this.flushSelections()}>Clear All</a>
 				</span>
 			)
 		} else {
-			return (<span>Select from {this.state.count} domains</span>)
+			return (<span style={style}> Select from {this.state.count} domains</span>)
 		}
 	}
-
-	renderFixedDiv(){
+	renderActionIcons(){
 		return (
-			<Fixed height={80} fixedTop={this.props.fixedTop}>
-				{this.renderFakeChildren()}
-			</Fixed>
-		)	
+			<ActionIcons 
+				disabled={!this.state.selectedItems.length} 
+				onClick={() => this.flushSelections()} 
+				float="right" 
+				icon="share"
+				/>
+		)
 	}
 	render(){
 		return (
 			<div style={{"width":"inherit"}}>
 				{this.renderItems()}
-				{this.renderFixedDiv()}
+				<Fixed height={80} fixedTop={this.props.fixedTop}>
+					{this.renderListHeader(this.state.selectedItems.length)}
+					{this.renderActionIcons()}
+				</Fixed>
 			</div>
 		)
 	}

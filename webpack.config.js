@@ -1,54 +1,65 @@
 // In webpack.config.js
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var UglifyJsPlugin = require('uglify-js-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var webpack = require("webpack")
+var HtmlWebpackPlugin = require("html-webpack-plugin")
+var UglifyJsPlugin = require("uglify-js-plugin")
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/client/index.html',
-  filename: 'index.html',
-  inject: 'body',
+  template: __dirname + "/client/index.html",
+  filename: "index.html",
+  inject: "body",
   links: [
-    'https://fonts.googleapis.com/css?family=Roboto',
+    "https://fonts.googleapis.com/css?family=Roboto",
   ]
 });
+
 // var ExtractTextPluginConfig=new ExtractTextPlugin({
 //   filename: "bundle.css",
 //   disable: false,
 //   allChunks: true
 // })
-const path = require('path');
+const path = require("path");
 
 const config = {
-  entry: './client/main.js',
+  entry: "./client/main.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js"
   },
   resolve:{
     alias: {
-      Db: path.resolve(__dirname, 'db/'),
+      Db: path.resolve(__dirname, "db/"),
     },
   },
   module: {
     rules: [
       { 
         test: [ /\.js$/, /\.jsx$/ ], 
-        loader: 'babel-loader', 
-        // exclude: path.resolve(__dirname, 'node_modules')
+        loader: "babel-loader", 
+        // exclude: path.resolve(__dirname, "node_modules")
+      }, 
+      {
+        test: /react-icons\/(.)*(.js)$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
       },
       { 
-        test: /\.scss$/, 
+        test: [/\.scss$/, /\.css$/],
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"]
         }),
-        // exclude: path.resolve(__dirname, 'node_modules')
-      },
+        // exclude: path.resolve(__dirname, "node_modules")
+      }, 
       {
         test: /\.json$/, 
-        use: 'json-loader',  
-      },
+        use: "json-loader",  
+      },      
+      {
+        test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/, loader: "file-loader"
+      }
     ]
   },
   performance: {
@@ -57,7 +68,7 @@ const config = {
     maxEntrypointSize: 400000, // int (in bytes)
     assetFilter: function(assetFilename) { 
       // Function predicate that provides asset filenames
-      return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
+      return assetFilename.endsWith(".css") || assetFilename.endsWith(".js");
     }
   },
   devtool: "source-map", // enum
@@ -71,7 +82,7 @@ const config = {
       }
     }),
     new ExtractTextPlugin({
-      filename: 'app.css',
+      filename: "app.css",
       allChunks: true,
     })
   ]
