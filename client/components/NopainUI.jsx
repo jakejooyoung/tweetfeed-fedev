@@ -153,7 +153,7 @@ export class ActionIcons extends React.Component {
         return (
             <span 
                 role={!disabled&&"button"}
-          onMouseOver={!disabled&&this.onMouseOver}
+                onMouseOver={!disabled&&this.onMouseOver}
                 onMouseOut={this.onMouseOut}
                 onClick={!disabled&&this.props.onClick}
                 style={style}

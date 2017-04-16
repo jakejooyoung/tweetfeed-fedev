@@ -31,22 +31,22 @@ export default class Menu extends React.Component {
 		}
 	}
     render() {
-    	const fixedHeight=this.props.fixedHeight+"px";
-    	const fixedTop=this.props.fixedTop;
-    	var menuContainer={
+    	let fixedHeight=this.props.fixedHeight+"px";
+    	let fixedTop=this.props.fixedTop;
+    	let menuContainer={
     		"width":this.props.width,
     	}
-    	var menu={
+    	let menu={
 		    "height": "calc(100% - "+fixedHeight+")",
 		    "bottom":fixedTop?"0":"initial",
 		    "top":fixedTop?"initial":"0",
     	}
-
-    	var overlay=(this.state.isOpen)?<div className="menuOverlay" onClick={this.handleClick}/>:null;
+    	let overlay=(this.state.isOpen)?<div className="menuOverlay" onClick={this.handleClick}/>:null;
+    	let textAlign={"textAlign":"center"};
         return (
         	<div className="menuContainer" style={menuContainer}>
-    			<AlignMiddle padding="0 30px">
-    				<div >
+    			<AlignMiddle style={textAlign} padding="0 30px">
+
 	        			<h4> This domain is available for purchase. </h4>
 	        			<h1> nrllace.com </h1>
 	    			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
@@ -59,7 +59,7 @@ export default class Menu extends React.Component {
 		        		<div role="button" className="seeMore" onClick={this.handleClick}>
 			   				See more domains <span>&#8594;</span>
 			   			</div>
-			   		</div>
+
 		   		</AlignMiddle>
         		<div className={this.state.isOpen?"menu selected":"menu unselected"} style={menu}>		
 					{this.props.children}	
