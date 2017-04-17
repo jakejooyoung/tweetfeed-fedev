@@ -28,7 +28,7 @@ export default class Menu extends React.Component {
 
 	renderMenuPlaceholder(){
 		return (
-			<AlignMiddle style={{"textAlign":"center"}} padding="0 30px">
+			<AlignMiddle className={this.state.isOpen?"menuPlaceholder hide":"menuPlaceholder show"} style={{"textAlign":"center"}} padding="0 30px">
     			<div className="welcomeText"> Did you want this domain? </div>
     			<h1 style={{"marginBottom":"100px"}}> nrllace.com </h1>
 			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
