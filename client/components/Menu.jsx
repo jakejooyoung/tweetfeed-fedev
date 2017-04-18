@@ -38,8 +38,8 @@ export default class Menu extends React.Component {
     			<div className="welcomeText"> Did you want this domain? </div>
     			<h1 style={{"marginBottom":"100px"}}> nrllace.com </h1>
 			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
-			        <input name="offer" placeholder="Price you'd like" onChange={this.validateCurrencyInput}></input>
-			        <input type="text" name="email" placeholder="Your email address"></input>
+			        <input name="offer" placeholder="Price you want" onChange={this.validateCurrencyInput}></input>
+			        <input type="text" name="email" placeholder="Your email"></input>
 			    </form>
     			<button role="button" onClick={this.openForm}>
     				Submit Interest
