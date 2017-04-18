@@ -6,10 +6,14 @@ export default class Menu extends React.Component {
 		super(props);
 		this.toggleMenu = this.toggleMenu.bind(this);
 		this.state = {
-		  isOpen: false
+		  isOpen: false,
+		  didMount: false
 		};
 	}
-
+	componentDidMount(){
+		this.setState((prevState, props) => ({ didMount: true }));
+	}
+	
 	toggleMenu(){
     	this.setState((prevState, props) => ({ isOpen: !prevState.isOpen }));
 	}
@@ -27,8 +31,10 @@ export default class Menu extends React.Component {
   	}
 
 	renderMenuPlaceholder(){
+		let transition=this.state.didMount?"show":"hide";
+
 		return (
-			<AlignMiddle className={this.state.isOpen?"menuPlaceholder hide":"menuPlaceholder show"} style={{"textAlign":"center"}} padding="0 30px">
+			<AlignMiddle className={!this.state.didMount?"hide":this.state.isOpen?"menuPlaceholder hide":"menuPlaceholder show"} style={{"textAlign":"center"}} padding="0 30px">
     			<div className="welcomeText"> Did you want this domain? </div>
     			<h1 style={{"marginBottom":"100px"}}> nrllace.com </h1>
 			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
