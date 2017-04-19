@@ -71,34 +71,29 @@ body{
 			position: fixed;
 			display: flex;
 		    flex-direction:row;
-		    .menuPlaceholder{
-		    	border-left:1px solid #c5c3c3;
-		    	border-right:1px solid #c5c3c3;
-		    }
 			.menu{
 			    background: white;
 			    width: inherit;
 			    position: fixed;
-			    left:-400px;
 			    overflow: auto;
-			   	-webkit-transition:left 0.2s ease-out;
-				   -moz-transition:left 0.2s ease-out;
-					 -o-transition:left 0.2s ease-out;
-				 		transition:left 0.2s ease-out;	
-			    &.selected{
-			    	left: 0;
-			    }
-			    .menuInner{
-			    	position: relative;
-			    }
+			   	-webkit-transition:all 0.15s ease-out;
+				   -moz-transition:all 0.15s ease-out;
+					 -o-transition:all 0.15s ease-out;
+				 		transition:all 0.15s ease-out;	
 			}
+		    .menuPlaceholder{
+		    	border-left:1px solid #c5c3c3;
+		    	border-right:1px solid #c5c3c3;
+		    	text-align: center;
+		    }
 			.menuOverlay{
 			    width: 100%;
 			    height: 100%;
 			    position: fixed;
-			    background: black;
-		        opacity: 0.5;
+			    background: grey;
 			    top: 0;
+			    left:0;
+				right:0;
 			    z-index: -1;
 			}
 		}

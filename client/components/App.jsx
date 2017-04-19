@@ -11,43 +11,46 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-	renderMain(isMenuOnRightSide){
-		const mainStyle = {
-		  "order":(isMenuOnRightSide?0:1)
-		};
+	render() {
+		const mainStyle = {"order":(this.props.menuOnRight?0:1)};
+		return (
+			<div className="app">
+				{this.renderMain()}
+				{this.renderSide()}
+			</div>
+		);
+	}
+	renderMain(){
+		const mainStyle = {"order":(this.props.menuOnRight?0:1)};
 		return (
 			<div className="main" style={mainStyle}>
 				<Responsive/>
 			</div>
 		)
 	}
-	renderSide(isMenuOnRightSide,menuWidth){
-		const fixedTop=true;
-		const sideStyle = {
-		  "order":(isMenuOnRightSide?1:0),
-		  "minWidth":menuWidth,
+	renderSide(){
+		const sideStyle = { 
+			"order":(this.props.menuOnRight?1:0), 
+			"minWidth":this.props.menuWidth 
 		};
 		return (
 			<div className="side" style={sideStyle}>
 				<Menu 
-					fixedTop={fixedTop}
+					fixedTop={this.props.fixedTop}
 					fixedHeight={80}
 					width={sideStyle.minWidth} 
-					isMenuOnRightSide={isMenuOnRightSide} 
+					menuOnRight={this.props.menuOnRight} 
 					isCollapsed> 
-					<CategorizedList fixedTop={fixedTop} wrapperType="post"/>
+					<CategorizedList fixedTop={this.props.fixedTop} wrapperType="post"/>
 		  		</Menu>
 			</div>
 		)
 	}
-	render() {
-		var isMenuOnRightSide=false;
-		var menuWidth=400;
-		return (
-			<div className="app">
-				{this.renderMain(isMenuOnRightSide)}
-				{this.renderSide(isMenuOnRightSide, menuWidth)}
-			</div>
-		);
-	}
 }
+App.defaultProps={
+	menuOnRight:true,
+	menuWidth:400,
+	fixedTop:true
+}
+
+

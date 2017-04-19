@@ -19,22 +19,25 @@ export default class Menu extends React.Component {
 	}
 
     render() {
+    	let w=this.props.width+"px";
         return (
-        	<div className="menuContainer" style={{"width":this.props.width}}>
+        	<div className="menuContainer" style={{width: w}}>
     			{this.renderMenuPlaceholder()}
     			{this.renderMenu()}
-        		{this.state.isOpen?
-        			<div className="menuOverlay" onClick={this.toggleMenu}/>:
-        			null}
+        		{
+        			this.state.isOpen ?
+	        			<div className="menuOverlay" onClick={this.toggleMenu}/>:
+	        			null
+        		}
 			</div>
  	    );
   	}
 
 	renderMenuPlaceholder(){
 		// let transition=this.state.didMount?"show":"hide";
-
+		let tgl=["menuPlaceholder",this.state.isOpen?"hide":"show"].join(" ");
 		return (
-			<AlignMiddle className={this.state.isOpen?"menuPlaceholder hide":"menuPlaceholder show"} style={{"textAlign":"center"}} padding="0 30px">
+			<AlignMiddle className={tgl} padding="0 30px">
     			<div className="welcomeText"> Did you want this domain? </div>
     			<h1 style={{"marginBottom":"100px"}}> nrllace.com </h1>
 			    <form className="inquiry" method="POST" action="/signin" data-autosubmit>
@@ -52,10 +55,12 @@ export default class Menu extends React.Component {
 	}
 
 	renderMenu(){
+		let posProp=(this.props.menuOnRight?"right":"left");
     	const headerHeightOffset={
 		    "height": "calc(100% - "+this.props.fixedHeight+"px)",
 		    "bottom":this.props.fixedTop?"0":"initial",
 		    "top":this.props.fixedTop?"initial":"0",
+		    [ posProp ] : this.state.isOpen?0:"-"+this.props.width+"px"
     	}
 		return (
     		<div className={this.state.isOpen?"menu selected":"menu unselected"} style={headerHeightOffset}>		
