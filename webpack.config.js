@@ -31,6 +31,21 @@ const config = {
       Db: path.resolve(__dirname, "db/"),
     },
   },
+  devServer:{proxy: {
+    "/api": {
+      target: 'http://jsonplaceholder.typicode.com',
+      bypass: function(req, res, proxyOptions) {
+        if (req.headers.accept.indexOf("html") !== -1) {
+          console.log("Skipping proxy for browser request.");
+          return "/index.html";
+        }
+      },
+              changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+    }
+  }},
   module: {
     rules: [
       { 
@@ -74,18 +89,6 @@ const config = {
   devtool: "source-map", // enum
   // enhance debugging by adding meta info for the browser devtools
   // source-map most detailed at the expense of build speed.
-  dev: {
-    proxyTable: {
-      // proxy all requests starting with /api to jsonplaceholder
-      '/api': {
-        target: 'http://jsonplaceholder.typicode.com',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
-    }
-  },
   plugins: [
     HTMLWebpackPluginConfig,
     new UglifyJsPlugin({

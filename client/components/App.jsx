@@ -48,7 +48,7 @@ export default class App extends React.Component {
 	}
 }
 App.defaultProps={
-	menuOnRight:true,
+	menuOnRight:false,
 	menuWidth:400,
 	fixedTop:true
 }
