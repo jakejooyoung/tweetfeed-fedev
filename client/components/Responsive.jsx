@@ -12,34 +12,27 @@ export default class Responsive extends React.Component {
   componentDidMount() {
     this.getPosts();
   }
-  getPosts() {
-    var headers = new Headers();
-    var init = {    method :  'GET'       ,
-                    headers:   headers    ,
-                    cache  :  'default'   }
-
-    var req = new Request('/api/posts', init);
-
-    fetch(req)
-      .then(response => {
-        if (response.status >= 400) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
-      })
-      .then((json) => { 
-        var arr=Object.keys(json).map((key)=> json[key] );
-        this.setState({ posts:arr }) 
-      })
-      .catch(function(error){
-        console.log("ERROR! "+error)
-      });
+  render() {
+    const center={
+      "width": "90%",
+      "margin": "0 auto"
+    }
+    const yt=<iframe width="100%" height="100%" src="https://www.youtube.com/embed/JQ6wTmaEyL4" frameborder="0" allowfullscreen/>
+    return (
+      <StackGrid 
+        columnWidth={220} 
+        gutterWidth={10} 
+        gutterHeight={10} 
+        appearDelay={15}
+        style={center}>
+        {this.renderPosts()}
+        <span className="card">{yt}</span>
+      </StackGrid>
+    )
   }
-  
   renderPosts(){
     var posts=this.state.posts;
     console.log(posts.length);
-    console.log(posts[0]);
 
     var innerDivs=[];
 
@@ -48,27 +41,25 @@ export default class Responsive extends React.Component {
       this
     );
   }
-  render() {
-    const center={
-      "width": "90%",
-      "margin": "0 auto"
-    }
-    
-    return (
-      <StackGrid columnWidth={150} style={center}>
-        {this.renderPosts()}
-      </StackGrid>
-    )
-
-    // return (
-    //   <StackGrid
-    //     columnWidth={150} style={center}
-    //   >
-          
-    //     <div className="card" key="key1">Item 1</div>
-    //     <div className="card" key="key2">Item 2</div>
-    //     <div className="card" key="key3"> Item 3</div>
-    //   </StackGrid>
-    // );
+  getPosts() {
+    var headers = new Headers();
+    var init = {    method :  'GET'       ,
+                    headers:   headers    ,
+                    cache  :  'default'   }
+    var req = new Request('/api/posts', init);
+    fetch(req)
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return res.json();
+      })
+      .then((json) => { 
+        let array=Object.keys(json).map((key)=> json[key]);
+        this.setState({ posts : array }) 
+      })
+      .catch(function(err){
+        console.log("ERROR! " + err)
+      });
   }
 }
