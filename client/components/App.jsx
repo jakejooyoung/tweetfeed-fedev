@@ -24,7 +24,7 @@ export default class App extends React.Component {
 		const mainStyle = {"order":(this.props.menuOnRight?0:1)};
 		return (
 			<div className="main" style={mainStyle}>
-				<Responsive/>
+				<Responsive></Responsive>
 			</div>
 		)
 	}
