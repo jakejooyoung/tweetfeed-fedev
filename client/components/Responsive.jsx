@@ -17,16 +17,15 @@ export default class Responsive extends React.Component {
       "width": "90%",
       "margin": "0 auto"
     }
-    const yt=<iframe width="100%" height="100%" src="https://www.youtube.com/embed/JQ6wTmaEyL4" frameborder="0" allowfullscreen/>
+    // const yt=<iframe width="100%" height="100%" src="https://www.youtube.com/embed/JQ6wTmaEyL4" frameborder="0" allowfullscreen/>
     return (
       <StackGrid 
-        columnWidth={220} 
-        gutterWidth={10} 
-        gutterHeight={10} 
+        columnWidth={400} 
+        gutterWidth={40} 
+        gutterHeight={20} 
         appearDelay={15}
         style={center}>
         {this.renderPosts()}
-        <span className="card">{yt}</span>
       </StackGrid>
     )
   }
