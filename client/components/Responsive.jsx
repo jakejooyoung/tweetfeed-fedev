@@ -36,7 +36,7 @@ export default class Responsive extends React.Component {
     var innerDivs=[];
 
     return posts.map(
-      (post)=>(<div className="card" key={post.id}>{post.body}</div>),
+      (post)=>(<div className="card" key={post.author}>{post.body}</div>),
       this
     );
   }
@@ -45,9 +45,10 @@ export default class Responsive extends React.Component {
     var init = {    method :  'GET'       ,
                     headers:   headers    ,
                     cache  :  'default'   }
-    var req = new Request('/api/posts', init);
+    var req = new Request('/api/posts/list', init);
     fetch(req)
       .then(res => {
+        console.log(res);
         if (res.status >= 400) {
           throw new Error("Bad response from server");
         }
@@ -55,7 +56,10 @@ export default class Responsive extends React.Component {
       })
       .then((json) => { 
         let array=Object.keys(json).map((key)=> json[key]);
-        this.setState({ posts : array }) 
+        // TO-DO: change it so that api sends just array.
+        // Currently way redundant sending ( posts : [  Array(3) ] )
+        this.setState({ posts : array[0] }) 
+        // this.setState({ posts : array }) 
       })
       .catch(function(err){
         console.log("ERROR! " + err)
