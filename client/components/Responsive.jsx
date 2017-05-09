@@ -36,7 +36,7 @@ export default class Responsive extends React.Component {
     var innerDivs=[];
 
     return posts.map(
-      (post)=>(<div className="card" key={post.author}>{post.body}</div>),
+      (post)=>(<div className="card" key={post.author}>{post.body}{post.title}</div>),
       this
     );
   }
@@ -45,7 +45,7 @@ export default class Responsive extends React.Component {
     var init = {    method :  'GET'       ,
                     headers:   headers    ,
                     cache  :  'default'   }
-    var req = new Request('/api/posts/list', init);
+    var req = new Request('/api/post/list', init);
     fetch(req)
       .then(res => {
         console.log(res);
