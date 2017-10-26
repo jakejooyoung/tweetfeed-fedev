@@ -3,7 +3,7 @@
 
 ### What is this repository for? ###
 
-This is a front-end server for CryptoMedia
+This is a front-end development server.
 
 
 ### What are the tools used in this repo? ###
