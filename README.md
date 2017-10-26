@@ -9,7 +9,7 @@ ______
 
 For writing & bundling static client-side code.
 ______
-**What it use:**:
+**What it uses:**:
 
 Uses React, Webpack, Babel, SCSS.
 ___
