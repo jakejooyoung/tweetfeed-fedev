@@ -17,10 +17,4 @@ ___
 
 1. Install Yarn package manager.
 
-- Mac
-	```
-	brew update
-	brew install yarn
-	yarn
-	yarn start
-	```
+https://yarnpkg.com/en/docs/install
