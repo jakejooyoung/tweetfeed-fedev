@@ -1,4 +1,4 @@
-# NopainUI Development Server#
+# NopainUI Development Server #
 
 
 ### What is this repository for? ###
@@ -17,6 +17,6 @@ Uses React, Webpack, Babel, SCSS.
 ```
 	$ git clone git@bitbucket.org:jakenpg/nopainui.git
 ```
-#### 1. Install yarn package manager ###
+#### 2. Install yarn package manager ###
 
 https://yarnpkg.com/en/docs/install
