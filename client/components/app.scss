@@ -121,6 +121,21 @@ body{
     	background:rgba(230, 230, 230, 0.1);
     }
 }
+.article{
+	h5 {
+	    position: absolute;
+	    margin-top: 220px;
+	    text-align: center;
+	    width: 100%;
+	}
+    position: relative;
+	width:300px;
+	height:500px;
+	background:lightblue;
+	text-align:center;
+	font-size:30px;
+	margin:30px auto;
+}
 .npUl{
 	.blip{
 		display: inline-block;

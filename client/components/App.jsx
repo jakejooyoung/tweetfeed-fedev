@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import Menu from "./Menu.jsx";
 import Responsive from "./Responsive.jsx";
 import CategorizedList from "./CategorizedList.jsx"
+import Article from "./Article.jsx"
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
 		const mainStyle = {"order":(this.props.menuOnRight?0:1)};
 		return (
 			<div className="main" style={mainStyle}>
+				<Article/>
 				<Responsive/>
 			</div>
 		)

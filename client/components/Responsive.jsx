@@ -36,7 +36,7 @@ export default class Responsive extends React.Component {
     var innerDivs=[];
 
     return posts.map(
-      (post)=>(<div className="card" key={post.author}>{post.body}{post.title}</div>),
+      (post)=>(<div className="card" key={post.id}>{post.body}{post.title}</div>),
       this
     );
   }
@@ -53,10 +53,10 @@ export default class Responsive extends React.Component {
         }
         return res.json();
       })
-      .then((json) => { 
+      .then((jsonRes) => { 
         // TO-DO: change it so that api sends just array.
         // Currently sends ( posts : [  Array(3) ] )
-        let array=Object.keys(json).map((key)=> json[key]);
+        let array=Object.keys(jsonRes).map((key)=> jsonRes[key]);
         this.setState({ posts : array }) 
       })
       .catch(function(err){

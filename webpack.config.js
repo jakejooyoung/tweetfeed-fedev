@@ -45,11 +45,11 @@ const config = {
         },
         pathRewrite: {
           '^/externalApi': '/'
-        }
+        },
+        changeOrigin: true
       },
       "/internalApi/**": {
-        target: 'localhost:3000',
-        changeOrigin: true,
+        target: 'http://localhost:3000', 
         bypass: function(req, res, proxyOptions) {
           if (req.headers.accept.indexOf("html") !== -1) {
             console.log("Skipping proxy for browser request.");
@@ -57,8 +57,9 @@ const config = {
           }
         },
         pathRewrite: {
-          '^/internal': '/'
-        }
+          '^/internalApi': '/'
+        },
+        changeOrigin: true,
       }
     }
   },
