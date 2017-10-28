@@ -1,26 +1,22 @@
-# NopainUI Development Server
+# NopainUI Development Server #
 
-______
-**What it is:**
 
-A development server 
-______
-**What it for:**
+### What is this repository for? ###
 
-For writing & bundling static client-side code.
-______
-**What it use:**:
+This is a front-end development server.
+
+
+### What are the tools used in this repo? ###
 
 Uses React, Webpack, Babel, SCSS.
-___
-**Getting Started:**
 
-1. Install Yarn package manager.
 
-- Mac
-	```
-	brew update
-	brew install yarn
-	yarn
-	yarn start
-	```
+### How do I get set up? ###
+
+#### 1. Clone repo ###
+```
+	$ git clone git@bitbucket.org:jakenpg/nopainui.git
+```
+#### 2. Install yarn package manager ###
+
+https://yarnpkg.com/en/docs/install
