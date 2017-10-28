@@ -1,14 +1,11 @@
-# NopainUI Development Server #
-
+# READ ME #
 
 ### What is this repository for? ###
 
-This is a front-end development server.
+This is a front-end development server for Crypto Media. 
 
+This repo was forked from NopainUI, a quick starter kit for setting up a basic front-end development server using Webpack, React, SCSS, Babel.
 
-### What are the tools used in this repo? ###
-
-Uses React, Webpack, Babel, SCSS.
 
 
 ### How do I get set up? ###
@@ -28,3 +25,7 @@ https://yarnpkg.com/en/docs/install
 	$ yarn install
 	$ yarn start
 ```
+
+##### Who do I talk to? ####
+* Hara Kang - hara0115@gmail.com
+* Jake Kim - jakejooyoung@gmail.com
