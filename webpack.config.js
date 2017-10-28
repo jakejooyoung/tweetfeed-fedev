@@ -33,7 +33,20 @@ const config = {
   },
   devServer:{proxy: {
     "/api/**": {
-      target: 'http://localhost:4000',
+      target: 'http://localhost:3000/api',
+      bypass: function(req, res, proxyOptions) {
+        if (req.headers.accept.indexOf("html") !== -1) {
+          console.log("Skipping proxy for browser request.");
+          return "/index.html";
+        }
+      },
+      changeOrigin: true,
+      // pathRewrite: {
+      //   '^/api': '/api'
+      // }
+    },
+    "/articles/**": {
+      target: 'http://localhost:3000/articles',
       bypass: function(req, res, proxyOptions) {
         if (req.headers.accept.indexOf("html") !== -1) {
           console.log("Skipping proxy for browser request.");
