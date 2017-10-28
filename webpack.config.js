@@ -24,41 +24,44 @@ const config = {
   entry: "./client/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
   },
   resolve:{
     alias: {
       Db: path.resolve(__dirname, "db/"),
     },
   },
-  devServer:{proxy: {
-    "/api/**": {
-      target: 'http://localhost:3000/api',
-      bypass: function(req, res, proxyOptions) {
-        if (req.headers.accept.indexOf("html") !== -1) {
-          console.log("Skipping proxy for browser request.");
-          return "/index.html";
+  devServer:{
+    compress: true,
+    proxy: {
+      "/externalApi/**": {
+        target: 'https://jsonplaceholder.typicode.com',
+        changeOrigin: true,
+        bypass: function(req, res, proxyOptions) {
+          if (req.headers.accept.indexOf("html") !== -1) {
+            console.log("Skipping proxy for browser request.");
+            return "/index.html";
+          }
+        },
+        pathRewrite: {
+          '^/externalApi': '/'
         }
       },
-      changeOrigin: true,
-      // pathRewrite: {
-      //   '^/api': '/api'
-      // }
-    },
-    "/articles/**": {
-      target: 'http://localhost:3000/articles',
-      bypass: function(req, res, proxyOptions) {
-        if (req.headers.accept.indexOf("html") !== -1) {
-          console.log("Skipping proxy for browser request.");
-          return "/index.html";
+      "/internalApi/**": {
+        target: 'localhost:3000',
+        changeOrigin: true,
+        bypass: function(req, res, proxyOptions) {
+          if (req.headers.accept.indexOf("html") !== -1) {
+            console.log("Skipping proxy for browser request.");
+            return "/index.html";
+          }
+        },
+        pathRewrite: {
+          '^/internal': '/'
         }
-      },
-      changeOrigin: true,
-      // pathRewrite: {
-      //   '^/api': '/api'
-      // }
+      }
     }
-  }},
+  },
   module: {
     rules: [
       { 

@@ -45,21 +45,19 @@ export default class Responsive extends React.Component {
     var init = {    method :  'GET'       ,
                     headers:   headers    ,
                     cache  :  'default'   }
-    var req = new Request('/api/post/list', init);
+    var req = new Request('/externalApi/posts', init);
     fetch(req)
       .then(res => {
-        console.log(res);
         if (res.status >= 400) {
           throw new Error("Bad response from server");
         }
         return res.json();
       })
       .then((json) => { 
-        let array=Object.keys(json).map((key)=> json[key]);
         // TO-DO: change it so that api sends just array.
-        // Currently way redundant sending ( posts : [  Array(3) ] )
-        this.setState({ posts : array[0] }) 
-        // this.setState({ posts : array }) 
+        // Currently sends ( posts : [  Array(3) ] )
+        let array=Object.keys(json).map((key)=> json[key]);
+        this.setState({ posts : array }) 
       })
       .catch(function(err){
         console.log("ERROR! " + err)
