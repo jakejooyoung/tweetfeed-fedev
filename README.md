@@ -17,6 +17,14 @@ Uses React, Webpack, Babel, SCSS.
 ```
 	$ git clone git@bitbucket.org:jakenpg/nopainui.git
 ```
+
 #### 2. Install yarn package manager ###
 
 https://yarnpkg.com/en/docs/install
+
+
+#### 3. Run server ###
+```
+	$ yarn install
+	$ yarn start
+```
