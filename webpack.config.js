@@ -36,6 +36,7 @@ const config = {
     proxy: {
       "/externalApi/**": {
         target: 'https://jsonplaceholder.typicode.com',
+        secure: false,
         changeOrigin: true,
         bypass: function(req, res, proxyOptions) {
           if (req.headers.accept.indexOf("html") !== -1) {
@@ -50,6 +51,7 @@ const config = {
       },
       "/internalApi/**": {
         target: 'http://localhost:3000', 
+        secure: false,
         bypass: function(req, res, proxyOptions) {
           if (req.headers.accept.indexOf("html") !== -1) {
             console.log("Skipping proxy for browser request.");
