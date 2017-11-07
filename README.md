@@ -8,7 +8,7 @@ This repo was forked from NopainUI, a quick starter kit for setting up a basic f
 
 
 
-### How do I get set up? ###
+### How do I get it running? ###
 
 #### 1. Clone repo ###
 ```
@@ -25,6 +25,13 @@ https://yarnpkg.com/en/docs/install
 	$ yarn install
 	$ yarn start
 ```
+
+
+#### 4. Build production bundle ###
+```
+	$ yarn run build
+```
+
 
 ##### Who do I talk to? ####
 * Hara Kang - hara0115@gmail.com
