@@ -12,7 +12,7 @@ This repo was forked from NopainUI, a quick starter kit for setting up a basic f
 
 #### 1. Clone repo ###
 ```
-	$ git clone git@bitbucket.org:jakenpg/nopainui.git
+	$ git clone git@bitbucket.org:gainsresearch/cm-frontend-dev-server.git
 ```
 
 #### 2. Install yarn package manager ###
