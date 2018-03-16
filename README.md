@@ -34,5 +34,4 @@ https://yarnpkg.com/en/docs/install
 
 
 ##### Who do I talk to? ####
-* Hara Kang - hara0115@gmail.com
 * Jake Kim - jakejooyoung@gmail.com
