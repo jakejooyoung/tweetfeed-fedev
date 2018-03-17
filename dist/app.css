@@ -881,6 +881,11 @@ body {
     height: 100%;
     overflow: auto;
     max-height: 100vh; }
+    .app .main .description {
+      width: 50%;
+      margin: 0 auto;
+      margin-top: 30px;
+      min-width: 400px; }
 
 /* COMPONENTS */
 .post {
