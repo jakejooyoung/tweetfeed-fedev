@@ -4,6 +4,8 @@
 
 This is a frontend development server for a barebone Twitter feed web application.
 
+Check out the demo here: https://tweetfeedmockup.com/.
+
 ### How do I get it running? ###
 
 #### 1. Clone repo ###
