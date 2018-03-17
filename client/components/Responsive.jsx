@@ -5,7 +5,8 @@ export default class Responsive extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      posts : []
+      posts : [],
+      hashtag:"",
     }
     this.getPosts = this.getPosts.bind(this);
   }
@@ -40,7 +41,7 @@ export default class Responsive extends React.Component {
         <div className="card tweet" key={post.id}>
           <div className="author">
             <div className="userName">
-              {post.userName}
+              {post.userName}{this.props.hashtag}
             </div>
             <div className="userHandle">
               @{post.userHandle}
@@ -54,11 +55,12 @@ export default class Responsive extends React.Component {
     );
   }
   getPosts() {
-    var headers = new Headers();
-    var init = {    method :  'GET'       ,
+    const headers = new Headers();
+    const init = {    method :  'GET'       ,
                     headers:   headers    ,
                     cache  :  'default'   }
-    var req = new Request('/internalApi/tweets', init);
+    let query=this.props.hashtag?("/"+this.props.hashtag):"";
+    let req = new Request('/internalApi/tweets'+query, init);
     fetch(req)
       .then(res => {
         if (res.status >= 400) {
