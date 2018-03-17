@@ -36,7 +36,20 @@ export default class Responsive extends React.Component {
     var innerDivs=[];
 
     return posts.map(
-      (post)=>(<div className="card" key={post.id}>{post.body}{post.title}</div>),
+      (post)=>(
+        <div className="card tweet" key={post.id}>
+          <div className="author">
+            <div className="userName">
+              {post.userName}
+            </div>
+            <div className="userHandle">
+              @{post.userHandle}
+            </div>
+          </div>
+          <div className="content">
+            {post.content}
+          </div>
+        </div>),
       this
     );
   }
@@ -45,7 +58,7 @@ export default class Responsive extends React.Component {
     var init = {    method :  'GET'       ,
                     headers:   headers    ,
                     cache  :  'default'   }
-    var req = new Request('/externalApi/posts', init);
+    var req = new Request('/internalApi/tweets', init);
     fetch(req)
       .then(res => {
         if (res.status >= 400) {

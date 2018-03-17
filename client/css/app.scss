@@ -2,6 +2,7 @@
 	--primary-color: red;
 	--link-color: #0079ff;
 	--success-color:#25ff3a;
+	--border-color: #d4d4d4;
 }
 body{
 	//required for react-motion-drawer
@@ -110,12 +111,36 @@ body{
     border-radius: 5px;
     background: white;
     padding: 10px;
-    border: 1px solid #d4d4d4;
+    border: 1px solid var(--border-color);
     &:hover{
     	box-shadow:#4db8fa 0px 1px 1px 0px;
     }
 }
-
+.tweet{
+	padding:10px;
+	text-align: left;
+	.author{
+		top:0;
+		height:30px;
+		width: 100%;
+		border-bottom:1px solid var(--border-color);
+		& >*{
+			display: inline-block;
+			padding:0px 3px 0px 3px;
+		}
+		.userName{
+			font-size: 16px;
+			font-weight: 400;
+		}
+		.userHandle{
+			font-size: 12px;
+			color:var(--link-color);
+		}
+	}
+	.content{
+		padding:3px;
+	}
+}
 /* UI GLOBALS */
 .subaction{
 	font-size: 10px;
