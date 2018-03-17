@@ -2,17 +2,13 @@
 
 ### What is this repository for? ###
 
-This is a front-end development server for Crypto Media. 
-
-This repo was forked from NopainUI, a quick starter kit for setting up a basic front-end development server using Webpack, React, SCSS, Babel.
-
-
+This is a frontend development server for a barebone Twitter feed web application.
 
 ### How do I get it running? ###
 
 #### 1. Clone repo ###
 ```
-	$ git clone git@github.com:jknpg/fedevserver.git
+	$ git clone git@github.com:jknpg/tweetfeed-fedev.git
 ```
 
 #### 2. Install yarn package manager ###
@@ -26,6 +22,7 @@ https://yarnpkg.com/en/docs/install
 	$ yarn start
 ```
 
+Dev-server should be up and running and port should open to 3000.
 
 #### 4. Build production bundle ###
 ```
