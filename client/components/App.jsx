@@ -5,14 +5,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Responsive from "./Responsive.jsx";
 
-var hashtag="ufc";
-
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+		  hashtag: "",
+		};
+		this.handleChange = this.handleChange.bind(this);
 	}
-	nextPath(path) {
-		this.props.history.push(path);
+	handleChange(event) {
+		this.setState({hashtag: event.target.value});
 	}
 	render() {
 		const mainStyle = {"border":"1px solid grey"};
@@ -20,7 +22,15 @@ export default class App extends React.Component {
 			<div className="app">
 				<div className="main" style={mainStyle}>
 					<h1> Barebone TweetFeed </h1>
-					<Responsive hashtag={hashtag}/>
+					<div>
+						<input 
+							type="text" 
+							value={this.state.hashtag} 
+							className="searchField"
+							onChange={ this.handleChange } 
+							placeholder="Try Searching for a Tweet!" />
+						<Responsive hashtag={this.state.hashtag}/>
+					</div>
 				</div>
 			</div>
 		);

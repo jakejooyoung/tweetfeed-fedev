@@ -13,6 +13,9 @@ export default class Responsive extends React.Component {
   componentDidMount() {
     this.getPosts();
   }
+  componentWillReceiveProps(hashtag) {
+    this.getPosts();
+  } 
   render() {
     const center={
       "width": "90%",
@@ -41,7 +44,7 @@ export default class Responsive extends React.Component {
         <div className="card tweet" key={post.id}>
           <div className="author">
             <div className="userName">
-              {post.userName}{this.props.hashtag}
+              {post.userName}
             </div>
             <div className="userHandle">
               @{post.userHandle}
@@ -56,7 +59,7 @@ export default class Responsive extends React.Component {
   }
   getPosts() {
     const headers = new Headers();
-    const init = {    method :  'GET'       ,
+    const init = {  method :  'GET'       ,
                     headers:   headers    ,
                     cache  :  'default'   }
     let query=this.props.hashtag?("/"+this.props.hashtag):"";
