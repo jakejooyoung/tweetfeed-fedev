@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "React App",
   "main": "index.js",
-  "repository": "git@bitbucket.org:jakenpg/react.git",
-  "author": "Gains Research",
-  "license": "Gains Research",
+  "repository": "git@github.com:jknpg/tweetfeed-fedev.git",
+  "author": "Jake Kim",
+  "license": "MIT",
   "dependencies": {
     "global": "^4.3.1",
     "html-webpack-plugin": "^2.28.0",
