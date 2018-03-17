@@ -17,7 +17,7 @@ export default class App extends React.Component {
 		this.setState({hashtag: event.target.value});
 	}
 	render() {
-		const mainStyle = {"border":"1px solid grey"};
+		const mainStyle = {};
 		return (
 			<div className="app">
 				<div className="main" style={mainStyle}>
