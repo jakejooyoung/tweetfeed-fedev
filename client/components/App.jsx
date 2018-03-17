@@ -21,7 +21,13 @@ export default class App extends React.Component {
 		return (
 			<div className="app">
 				<div className="main" style={mainStyle}>
-					<h1> Barebone TweetFeed </h1>
+					<h1> A Simple TweetFeed Mockup</h1>
+					<p className="description"> 
+						This simple Twitter feed mockup was created using <b>node</b>, <b>express</b>, <b>react</b>, <b>scss</b>, and <b> webpack</b>. 
+					<br/>
+						Check out the API server code <a href="https://github.com/jknpg/tweetfeed-api">here</a>,
+						and the frontend development server code <a href="https://github.com/jknpg/tweetfeed-fedev">here</a>.
+					</p>
 					<div>
 						<input 
 							type="text" 
